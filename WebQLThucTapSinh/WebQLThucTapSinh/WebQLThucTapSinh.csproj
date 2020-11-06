@@ -144,6 +144,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\CompanyAndSchool.cs" />
+    <Compile Include="Common\Share.cs" />
+    <Compile Include="Controllers\CompanysController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3147,7 +3150,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\AdminMaster.cshtml" />
+    <Content Include="Views\Companys\Index.cshtml" />
+    <Content Include="Views\Email\EmailCompany.html" />
+    <Content Include="Views\Companys\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

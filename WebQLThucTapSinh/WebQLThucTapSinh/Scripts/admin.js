@@ -1,6 +1,6 @@
 ﻿
 $(document).ready(function(){
-    CKEDITOR.replace("ChiTiet");
+    CKEDITOR.replace("Note");
 
     $(function () {
         $('.datepicker').datepicker({
@@ -16,7 +16,15 @@ $(document).ready(function(){
     $("#SelectImage").click(function () {
         var finder = new CKFinder();
         finder.selectActionFunction = function (fileUrl) {
-            $("#Anh").val(fileUrl);
+            $("#Image").val(fileUrl);
+        };
+        finder.popup();
+    });
+
+    $("#SelectLogo").click(function () {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            $("#Logo").val(fileUrl);
         };
         finder.popup();
     });
