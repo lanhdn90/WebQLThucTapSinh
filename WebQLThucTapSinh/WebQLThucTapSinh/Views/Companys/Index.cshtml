@@ -44,13 +44,13 @@
                     @Html.DropDownList("Gender", (IEnumerable<SelectListItem>)ViewBag.Month, "Chọn tháng", htmlAttributes:
                     new { @class = "gender "})
                 </td>
-                    <td><a href="#" class="btn btn-warning">Sửa</a>||<a data-id="#" class="xoaSanPham btn btn-danger">Xóa</a></td>
+                    <td><a href="/Companys/Edit/@item.ID" class="btn btn-warning">Sửa</a>||<a data-id="@item.ID" data-name="@item.Name" class="deleteCompany btn btn-danger">Xóa</a></td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 
-@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/admin.js"></script>*@
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/admin.js"></script>
 

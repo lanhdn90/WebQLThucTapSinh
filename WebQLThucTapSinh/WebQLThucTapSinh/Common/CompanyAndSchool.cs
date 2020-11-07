@@ -132,5 +132,28 @@ namespace WebQLThucTapSinh.Common
                 return false;
             }
         }
+
+        public bool Update(Organization organ)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var model = database.Organization.Find(organ.ID);
+                model.Name = organ.Name;
+                model.Address = organ.Address;
+                model.Fax = organ.Fax;
+                model.Phone = organ.Phone;
+                model.Image = organ.Image;
+                model.Note = organ.Note;
+                model.Email = organ.Email;
+                model.Logo = organ.Logo;
+                database.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

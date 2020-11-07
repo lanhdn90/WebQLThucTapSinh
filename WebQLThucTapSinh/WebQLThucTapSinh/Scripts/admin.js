@@ -29,13 +29,16 @@ $(document).ready(function(){
         finder.popup();
     });
 
-    $(".xoaSanPham").off('click').on('click', function (e) {
+
+
+    $(".deleteCompany").off('click').on('click', function (e) {
         e.preventDefault();
         var id = $(this).data('id');
-        var r = confirm('Bạn có muốn xóa' + id + ' hay không ?');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có muốn xóa' + name + ' hay không ?');
         if (r == true) {
             $.ajax({
-                url: '/QLSanPham/Delete',
+                url: '/Companys/Delete',
                 data: { id: id },
                 type: 'POST',
                 success: function (data) {
