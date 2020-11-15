@@ -8,8 +8,6 @@ $(document).ready(function(){
             changeMonth: true,
             changeYear: true,
             yearRange: '1970:2030',
-            //showOn: "both",
-            //buttonText: "<i class='fa fa-calendar'></i>"
         });
     });
 
@@ -29,90 +27,14 @@ $(document).ready(function(){
         finder.popup();
     });
 
-
-
-    $(".deleteCompany").off('click').on('click', function (e) {
+    $(".deleteQuestion").off('click').on('click', function (e) {
         e.preventDefault();
         var id = $(this).data('id');
         var name = $(this).data('name');
-        var r = confirm('Bạn có muốn xóa' + name + ' hay không ?');
+        var r = confirm('Bạn có muốn xóa câu hỏi ' + name + ' hay không ?');
         if (r == true) {
             $.ajax({
-                url: '/Companys/Delete',
-                data: { id: id },
-                type: 'POST',
-                success: function (data) {
-                    var json = JSON.parse(data);
-                    alert(json);
-                    window.location.reload();
-                },
-                error: function (err) {
-                    alert("Đã xảy ra lỗi" + err.responseText);
-                }
-            });
-            //window.location.reload();
-        }
-    });
-
-    $(".editCTHD").off('click').on('click', function (e) {
-        e.preventDefault();
-        var id = $(this).data('id1');
-        var amount = $(this).data('amount');
-        var r = prompt("Nhập số lượng muốn thay đổi","");
-        if (r != null) {
-            var soluong = parseInt(r);
-            if (soluong > 0 && soluong <= amount) {
-                $.ajax({
-                    url: '/QLHoaDon/SuaChiTietHD',
-                    data: {
-                        id: id,
-                        soluong: soluong
-                    },
-                    type: 'POST',
-                    success: function (data) {
-                        var json = JSON.parse(data);
-                        alert(json);
-                        window.location.reload();
-                    },
-                    error: function (err) {
-                        alert("Đã xảy ra lỗi" + err.responseText);
-                    }
-                });
-            } else {
-                alert("Số lượng bạn mua vượt qua số lượng trong kho");
-            }
-            
-        }
-    });
-
-    $(".xoaChiTietHD").off('click').on('click', function (e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var r = confirm('Bạn có muốn xóa' + id + ' hay không ?');
-        if (r == true) {
-            $.ajax({
-                url: '/QLHoaDon/DeleteChiTietHD',
-                data: { id: id },
-                type: 'POST',
-                success: function (data) {
-                    var json = JSON.parse(data);
-                    alert(json);
-                    window.location.reload();
-                },
-                error: function (err) {
-                    alert("Đã xảy ra lỗi" + err.responseText);
-                }
-            });
-        }
-    });
-
-    $(".xoaHoaDon").off('click').on('click', function (e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var r = confirm('Bạn có muốn xóa' + id + ' hay không ?');
-        if (r == true) {
-            $.ajax({
-                url: '/QLHoaDon/DeleteHD',
+                url: '/Question/Delete',
                 data: { id: id },
                 type: 'POST',
                 success: function (data) {

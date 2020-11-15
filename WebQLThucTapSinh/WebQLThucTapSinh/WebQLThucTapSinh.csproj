@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2612E631-8DE9-4385-9F8C-CA17874F3ED4}</ProjectGuid>
+    <ProjectGuid>{7371A5DE-2DF0-4C3F-AA33-BAC6B6DDBA78}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44380</IISExpressSSLPort>
+    <IISExpressSSLPort>44375</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -68,6 +68,10 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -144,62 +148,61 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Common\CompanyAndSchool.cs" />
     <Compile Include="Common\QuestionClass.cs" />
-    <Compile Include="Common\Share.cs" />
     <Compile Include="Common\TaskClass.cs" />
-    <Compile Include="Controllers\CompanysController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConnectDatabase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDatabase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ConnectDatabase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ConnectDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConnectDatabase.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Intern.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InternShip.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IntershipWithTask.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Organization.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Task.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TestResults.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>ConnectDatabase.tt</DependentUpon>
+      <DependentUpon>Website.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Website.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Website.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Website.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Website.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Website.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Website.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2991,27 +2994,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\file excel\excel1.png" />
+    <Content Include="Images\file excel\excel2.jpg" />
+    <Content Include="Images\file excel\excel3.jpg" />
+    <Content Include="Images\file excel\excel4.png" />
+    <Content Include="Images\file excel\excel5.jpg" />
     <Content Include="Images\logo.png" />
-    <Content Include="Models\ConnectDatabase.Context.tt">
+    <Content Include="Models\Website.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ConnectDatabase.Context.cs</LastGenOutput>
-      <DependentUpon>ConnectDatabase.edmx</DependentUpon>
+      <LastGenOutput>Website.Context.cs</LastGenOutput>
+      <DependentUpon>Website.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\ConnectDatabase.tt">
+    <Content Include="Models\Website.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConnectDatabase.edmx</DependentUpon>
-      <LastGenOutput>ConnectDatabase.cs</LastGenOutput>
+      <DependentUpon>Website.edmx</DependentUpon>
+      <LastGenOutput>Website.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ConnectDatabase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConnectDatabase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ConnectDatabase.edmx.diagram">
-      <DependentUpon>ConnectDatabase.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\ckeditor\CHANGES.md" />
     <Content Include="Content\ckeditor\LICENSE.md" />
     <Content Include="Content\ckeditor\plugins\exportpdf\CHANGELOG.md" />
@@ -3051,14 +3052,6 @@
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
-    <Content Include="fonts\BreeSerif-Regular.otf" />
-    <Content Include="fonts\BreeSerif-Regular.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\Lato-Regular.ttf" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Content\fontawesome-free-5.15.1-web\less\brands.less" />
     <Content Include="Content\fontawesome-free-5.15.1-web\less\fontawesome.less" />
     <Content Include="Content\fontawesome-free-5.15.1-web\less\regular.less" />
@@ -3113,6 +3106,21 @@
     <Content Include="Content\fontawesome-free-5.15.1-web\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\fontawesome-free-5.15.1-web\webfonts\fa-solid-900.woff" />
     <Content Include="Content\fontawesome-free-5.15.1-web\webfonts\fa-solid-900.woff2" />
+    <Content Include="fonts\BreeSerif-Regular.otf" />
+    <Content Include="fonts\BreeSerif-Regular.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\Lato-Regular.ttf" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <EntityDeploy Include="Models\Website.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Website.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Website.edmx.diagram">
+      <DependentUpon>Website.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -3152,10 +3160,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Companys\Index.cshtml" />
-    <Content Include="Views\Email\EmailCompany.html" />
-    <Content Include="Views\Companys\Create.cshtml" />
-    <Content Include="Views\Companys\Edit.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\Question\Create.cshtml" />
+    <Content Include="Views\Question\CreateExcel.cshtml" />
+    <Content Include="Views\Question\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -3190,9 +3199,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60880</DevelopmentServerPort>
+          <DevelopmentServerPort>50380</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44380/</IISUrl>
+          <IISUrl>https://localhost:44375/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

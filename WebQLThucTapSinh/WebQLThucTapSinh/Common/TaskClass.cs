@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace QLThucTapSinh.Common
+namespace WebQLThucTapSinh.Common
 {
     public class TaskClass
     {
@@ -13,6 +13,5 @@ namespace QLThucTapSinh.Common
         public string Video { get; set; }
         public string PersonID { get; set; }
         public string FullName { get; set; }
-
     }
 }

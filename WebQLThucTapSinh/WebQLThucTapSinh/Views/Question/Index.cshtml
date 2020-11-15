@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using WebQLThucTapSinh.Models;
+@model List<WebQLThucTapSinh.Common.QuestionClass>
+@{
+    //var roileId = int.Parse(@Session["Role"].ToString());
+    var roileId = 4;
+}
+@if (roileId == 4)
+{
+    <a style="margin-top: 12px" href="/Question/Create" id="them" class="them btn btn-outline btn-primary">Thêm</a>
+    <a style="margin-top: 12px" href="/Question/Create" id="them" class="them btn btn-outline btn-primary">Thêm File Excel</a>
+}
+<div class="text-primary" style="text-align:center"><h2>DANH SÁCH CÂU HỎI</h2></div>
+<div class="dataTable_wrapper">
+    <table class="table table-striped table-bordered table-hover" id="table">
+        <thead>
+            <tr>
+                <th>Nội dung</th>
+                @if (roileId == 4)
+                {
+                    <th>Đáp án A</th>
+                    <th>Đáp án B</th>
+                    <th>Đáp án C</th>
+                    <th>Đáp án D</th>
+                    <th>Đáp án Đúng</th>
+                }
+                else
+                {
+                    <th>Bài học</th>
+                    <th>Quản lý</th>
+                }
+                <th>Hoạt Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Content</td>
+                    @if (roileId == 4)
+                    {
+                        <td>@item.A</td>
+                        <td>@item.B</td>
+                        <td>@item.C</td>
+                        <td>@item.D</td>
+                        <td>@item.Answer</td>
+                    }
+                    else
+                    {
+                        <td>@item.TaskName</td>
+                        <td>@item.FullName</td>
+                    }
+                    <td><a href="/Question/Edit/@item.QuestionID" class="btn btn-warning">Sửa</a>||
+                    <a data-id="@item.QuestionID" data-name="@item.Content" class="deleteQuestion btn btn-danger">Xóa</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/admin.js"></script>
+
