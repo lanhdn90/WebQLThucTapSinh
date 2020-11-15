@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Company.cs" />
     <Compile Include="Common\QuestionClass.cs" />
     <Compile Include="Common\TaskClass.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3165,6 +3166,8 @@
     <Content Include="Views\Question\Create.cshtml" />
     <Content Include="Views\Question\CreateExcel.cshtml" />
     <Content Include="Views\Question\Edit.cshtml" />
+    <Content Include="Views\Tasks\Create.cshtml" />
+    <Content Include="Views\Tasks\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
