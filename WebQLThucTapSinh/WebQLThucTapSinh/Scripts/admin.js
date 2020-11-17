@@ -1,6 +1,6 @@
 ﻿
 $(document).ready(function(){
-    CKEDITOR.replace("Note");
+    CKEDITOR.replace("FullDescription");
 
     $(function () {
         $('.datepicker').datepicker({
@@ -102,5 +102,77 @@ $(document).ready(function(){
                 }
             });
         }
+    });
+
+    $(".deleteTaskInInternShip").off('click').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có chắc muốn xóa Bài học ' + name + ' hay không ?');
+        if (r == true) {
+            $.ajax({
+                url: '/InternShip/DeleteInternShipWithTask',
+                data: { id: id },
+                type: 'POST',
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    alert(json);
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Đã xảy ra lỗi" + err.responseText);
+                }
+            });
+        }
+    });
+
+    $(".deleteInternShip").off('click').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có chắc muốn xóa Khóa học ' + name + ' hay không ?');
+        if (r == true) {
+            $.ajax({
+                url: '/InternShip/Delete',
+                data: { id: id },
+                type: 'POST',
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    alert(json);
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Đã xảy ra lỗi" + err.responseText);
+                }
+            });
+        }
+    });
+
+
+    var id;
+    $('.idSort').mouseover(function () {
+        //var sort = $('#sort option:selected').text();;
+        var task = $(this).data('ids');
+        id = parseInt(task);
+    });
+
+    $('.dsach').change(function () {
+        var sort = parseInt($(this).val());
+        $.ajax({
+            url: '/InternShip/UpdateSort',
+            data: {
+                id: id,
+                sort: sort },
+            type: 'POST',
+            success: function (data) {
+                var json = JSON.parse(data);
+                alert(json);
+                window.location.reload();
+            },
+            error: function (err) {
+                alert("Đã xảy ra lỗi" + err.responseText);
+            }
+        });
+        //alert(sort + "id" + id);
     });
 });

@@ -17,7 +17,7 @@ namespace WebQLThucTapSinh.Models
         public int ID { get; set; }
         public Nullable<int> InternshipID { get; set; }
         public Nullable<int> TaskID { get; set; }
-        public Nullable<int> Sort { get; set; }
+        public int Sort { get; set; }
     
         public virtual InternShip InternShip { get; set; }
         public virtual Task Task { get; set; }

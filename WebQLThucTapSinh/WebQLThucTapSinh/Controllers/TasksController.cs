@@ -71,7 +71,6 @@ namespace WebQLThucTapSinh.Controllers
             var id = "PERSONBC";
             // Lấy roleID
             //var r = Convert.ToInt32(Session["Role"].ToString());
-            var r = 4;
             var find = database.Person.Find(id);
             return database.InternShip.Where(x => x.CompanyID == find.CompanyID).ToList();
         }
@@ -138,7 +137,7 @@ namespace WebQLThucTapSinh.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Thêm Công ty thất bại");
+                    ModelState.AddModelError("", "Thêm Bài học thất bại");
                 }
             }
             return View("Create");

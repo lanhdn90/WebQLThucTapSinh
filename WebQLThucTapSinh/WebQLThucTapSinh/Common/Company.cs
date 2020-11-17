@@ -98,5 +98,28 @@ namespace WebQLThucTapSinh.Common
 
         }
 
+        public bool UpdateIntern(int id)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var listIntern = database.Intern.Where(x => x.InternshipID == id).ToList();
+                if(listIntern != null)
+                {
+                    foreach(var item in listIntern)
+                    {
+                        item.InternshipID = null;
+                        item.Result = 0;
+                    }
+                    database.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

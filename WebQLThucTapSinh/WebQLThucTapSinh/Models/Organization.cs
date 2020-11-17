@@ -11,7 +11,8 @@ namespace WebQLThucTapSinh.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class Organization
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,6 +30,7 @@ namespace WebQLThucTapSinh.Models
         public string Fax { get; set; }
         public string Image { get; set; }
         public string Logo { get; set; }
+        [AllowHtml]
         public string Note { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> StartDay { get; set; }

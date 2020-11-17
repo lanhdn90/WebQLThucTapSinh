@@ -232,7 +232,7 @@ namespace WebQLThucTapSinh.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "cập nhật thất bại thất bại");
+                    ModelState.AddModelError("", "cập nhật thất bại");
                 }               
             }
             SetViewBag(1);
@@ -266,7 +266,9 @@ namespace WebQLThucTapSinh.Controllers
             try
             {
                 WebDatabaseEntities database = new WebDatabaseEntities();
+                //Đếm table quesition có báo nhiêu row
                 var count = database.Question.ToList().Count;
+                // kiểm tra count và id có bằng nhau không
                 if(count == id)
                 {
                     database.Question.Remove(database.Question.Find(id));

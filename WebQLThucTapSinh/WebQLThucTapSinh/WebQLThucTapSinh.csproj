@@ -149,9 +149,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Company.cs" />
+    <Compile Include="Common\LeaderClass.cs" />
+    <Compile Include="Models\InternShipViewModel.cs" />
     <Compile Include="Common\QuestionClass.cs" />
     <Compile Include="Common\TaskClass.cs" />
+    <Compile Include="Common\TaskDatabase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InternShipController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3168,6 +3172,9 @@
     <Content Include="Views\Question\Edit.cshtml" />
     <Content Include="Views\Tasks\Create.cshtml" />
     <Content Include="Views\Tasks\Edit.cshtml" />
+    <Content Include="Views\InternShip\Index.cshtml" />
+    <Content Include="Views\InternShip\Create.cshtml" />
+    <Content Include="Views\InternShip\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
