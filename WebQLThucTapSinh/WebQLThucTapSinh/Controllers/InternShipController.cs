@@ -12,7 +12,7 @@ namespace WebQLThucTapSinh.Controllers
     public class InternShipController : Controller
     {
         // GET: InternShip
-        public ActionResult Index(int id)
+        public ActionResult Index(int id = 0)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             var model = listIShip();
@@ -37,7 +37,7 @@ namespace WebQLThucTapSinh.Controllers
             WebDatabaseEntities database = new WebDatabaseEntities();
             //Sau khi làm sprint Login thì mở lại
             //var personID = Session["Person"].ToString();
-            var personID = "PERSONBC";
+            var personID = "ZXCKBHML";
 
             //var role = Convert.ToInt32(Session["Role"]);
             var role = 2;
@@ -109,7 +109,7 @@ namespace WebQLThucTapSinh.Controllers
                 i.ExpiryDate = ish.ExpiryDate;
                 i.Status = false;
                 //i.CompanyID = Session["CompanyID"].ToString();
-                i.CompanyID = "ORGANIZC";
+                i.CompanyID = "QWERTFGH";
                 //var ro = Convert.ToInt32(Session["Role"]);
                 var ro = 4;
                 if (ish.PersonID != null)
@@ -119,7 +119,7 @@ namespace WebQLThucTapSinh.Controllers
                 else if (ro == 4)
                 {
                     //var pid = Session["Person"].ToString();
-                    var pid = "PERSONBC";
+                    var pid = "ZXCKBHML";
                     i.PersonID = pid;
                 }
                 database.InternShip.Add(i);
@@ -168,7 +168,7 @@ namespace WebQLThucTapSinh.Controllers
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             //var model = Session["CompanyID"].ToString();
-            var model = "ORGANIZC";
+            var model = "QWERTFGH";
             var list = database.Person.Where(x => x.CompanyID == model && x.RoleID == 4).ToList();
             var listLeader = new List<LeaderClass>();
             LeaderClass leader = new LeaderClass();
@@ -239,7 +239,7 @@ namespace WebQLThucTapSinh.Controllers
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             //var pid = Session["Person"].ToString();
-            var pid = "PERSONBC";
+            var pid = "ZXCKBHML";
             var model = database.InternShip.Find(id);
             model.PersonID = pid;
             database.SaveChanges();

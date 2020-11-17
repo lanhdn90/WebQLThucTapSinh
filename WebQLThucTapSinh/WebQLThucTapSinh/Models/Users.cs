@@ -17,7 +17,7 @@ namespace WebQLThucTapSinh.Models
         public string UserName { get; set; }
         public string PersonID { get; set; }
         public string PassWord { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
     
         public virtual Person Person { get; set; }
     }

@@ -42,11 +42,11 @@
     <a href="#tab_1-2" data-toggle="tab" class="btn btn-outline btn-primary">Không có Quản lý</a>
     <a href="/InternShip/Create" id="them" class="them btn btn-outline btn-primary">Thêm</a>
 </div>
-<div class="dataTable_wrapper tab-content">
+<div class="dataTable_wrapper tab-content" ">
     <div class=" tab-pane active" id="tab_1-1">
-        <div class="col-md-8">
-            <div class="row">
-                <h2 style="width: 100%; text-align: center;">Danh sách khóa học</h2>
+        <div class="col-md-8" style="margin-left: 0px !important;">
+            <div class="row" >
+                <h2 style="width: 100%; margin-left: 0px !important; text-align: center;">Danh sách khóa học</h2>
                 <br />
                 <br />
                 <table class="table ble">
@@ -97,7 +97,7 @@
         <div class="col-md-4 ban2">
             <div class="row">
                 @{ @*var name = Convert.ToInt32(@Session["InternshipID"]);*@
-                var name = 21;
+                var name = 1;
                 }
                 <h2 style="width: 100%;text-align: center;">Danh sách bài học <br /> @database.InternShip.Find(name).CourseName</h2>
                 @ViewBag.ERR

@@ -17,7 +17,7 @@ namespace WebQLThucTapSinh.Controllers
             WebDatabaseEntities database = new WebDatabaseEntities();
             //Sau khi làm sprint Login thì mở lại
             //var id = Session["Person"].ToString();
-            var id = "PERSONBC";
+            var id = "ZXCKBHML";
             // Lấy roleID
             //var r = Convert.ToInt32(Session["Role"].ToString());
             var ro = 4;
@@ -43,7 +43,7 @@ namespace WebQLThucTapSinh.Controllers
             else
             {
                 //var comid = Session["CompanyID"].ToString();
-                var comid = "ORGANIZC";
+                var comid = "QWERTFGH";
                 var model = (from a in database.Task
                              join b in database.Person on a.PersonID equals b.PersonID
                              where b.CompanyID == comid && b.RoleID == 4
@@ -68,7 +68,7 @@ namespace WebQLThucTapSinh.Controllers
             WebDatabaseEntities database = new WebDatabaseEntities();
             //Sau khi làm sprint Login thì mở lại
             //var id = Session["Person"].ToString();
-            var id = "PERSONBC";
+            var id = "ZXCKBHML";
             // Lấy roleID
             //var r = Convert.ToInt32(Session["Role"].ToString());
             var find = database.Person.Find(id);
@@ -150,7 +150,7 @@ namespace WebQLThucTapSinh.Controllers
                 WebDatabaseEntities database = new WebDatabaseEntities();
                 //Sau khi làm sprint Login thì mở lại
                 //var personID = Session["Person"].ToString();
-                var personID = "PERSONBC";
+                var personID = "ZXCKBHML";
                 var count = database.Task.Count();
                 Task t = new Task();
                 t.TaskID = count + 1;

@@ -150,6 +150,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Company.cs" />
     <Compile Include="Common\LeaderClass.cs" />
+    <Compile Include="Common\Share.cs" />
+    <Compile Include="Controllers\LeaderController.cs" />
     <Compile Include="Models\InternShipViewModel.cs" />
     <Compile Include="Common\QuestionClass.cs" />
     <Compile Include="Common\TaskClass.cs" />
@@ -2994,6 +2996,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Email\SendEmailPerson.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -3175,6 +3178,10 @@
     <Content Include="Views\InternShip\Index.cshtml" />
     <Content Include="Views\InternShip\Create.cshtml" />
     <Content Include="Views\InternShip\Edit.cshtml" />
+    <Content Include="Views\Leader\Index.cshtml" />
+    <Content Include="Views\Leader\Create.cshtml" />
+    <Content Include="Views\Leader\Edit.cshtml" />
+    <Content Include="Views\Leader\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
