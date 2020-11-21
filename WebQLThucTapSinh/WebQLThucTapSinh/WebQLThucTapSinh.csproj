@@ -150,8 +150,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Company.cs" />
     <Compile Include="Common\LeaderClass.cs" />
+    <Compile Include="Common\RepresentativeClass.cs" />
     <Compile Include="Common\Share.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\LeaderController.cs" />
+    <Compile Include="Controllers\RepresentativeController.cs" />
+    <Compile Include="Models\Intern.cs">
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InternShip.cs">
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\InternShipViewModel.cs" />
     <Compile Include="Common\QuestionClass.cs" />
     <Compile Include="Common\TaskClass.cs" />
@@ -163,53 +172,50 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Intern.cs">
-      <DependentUpon>Website.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\InternShip.cs">
-      <DependentUpon>Website.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IntershipWithTask.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\News.cs">
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Organization.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Task.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TestResults.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Website.Context.cs">
+    <Compile Include="Models\WebDatabaseEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Website.Context.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Website.cs">
+    <Compile Include="Models\WebDatabaseEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Website.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Website.Designer.cs">
+    <Compile Include="Models\WebDatabaseEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Website.edmx</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -3008,15 +3014,15 @@
     <Content Include="Images\file excel\excel4.png" />
     <Content Include="Images\file excel\excel5.jpg" />
     <Content Include="Images\logo.png" />
-    <Content Include="Models\Website.Context.tt">
+    <Content Include="Models\WebDatabaseEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Website.Context.cs</LastGenOutput>
-      <DependentUpon>Website.edmx</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
+      <LastGenOutput>WebDatabaseEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Website.tt">
+    <Content Include="Models\WebDatabaseEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Website.edmx</DependentUpon>
-      <LastGenOutput>Website.cs</LastGenOutput>
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
+      <LastGenOutput>WebDatabaseEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3122,12 +3128,12 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\Lato-Regular.ttf" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <EntityDeploy Include="Models\Website.edmx">
+    <EntityDeploy Include="Models\WebDatabaseEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Website.Designer.cs</LastGenOutput>
+      <LastGenOutput>WebDatabaseEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Website.edmx.diagram">
-      <DependentUpon>Website.edmx</DependentUpon>
+    <Content Include="Models\WebDatabaseEntities.edmx.diagram">
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
@@ -3182,6 +3188,8 @@
     <Content Include="Views\Leader\Create.cshtml" />
     <Content Include="Views\Leader\Edit.cshtml" />
     <Content Include="Views\Leader\Delete.cshtml" />
+    <Content Include="Views\Representative\Index.cshtml" />
+    <Content Include="Views\Faculty\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

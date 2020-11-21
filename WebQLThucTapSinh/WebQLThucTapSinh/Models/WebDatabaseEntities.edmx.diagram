@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69a503fc690d42b9b7fd8f90fc70054a" Name="Diagram1">
+        <EntityTypeShape EntityType="WebDatabaseModel.Intern" Width="1.5" PointX="11.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.InternShip" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.IntershipWithTask" Width="1.5" PointX="13.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.Menu" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.News" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.Organization" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.Person" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.Question" Width="1.5" PointX="10.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.Role" Width="1.5" PointX="3.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.Task" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.TestResults" Width="1.5" PointX="13.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebDatabaseModel.Users" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="WebDatabaseModel.FK__Intern__PersonID__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_Intern_InternShip" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_TestResults_Intern" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_InternShip_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_InternShip_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_IntershipWithTask_Internship" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_IntershipWithTask_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_Menu_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_News_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_Person_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_Person_School" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK__Users__PersonID__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_Person_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_Task_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_Question_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="WebDatabaseModel.FK_TestResults_Task" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

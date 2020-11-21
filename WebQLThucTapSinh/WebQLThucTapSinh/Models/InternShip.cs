@@ -31,7 +31,7 @@ namespace WebQLThucTapSinh.Models
         public DateTime StartDay { get; set; }
         public int ExpiryDate { get; set; }
         public bool Status { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Intern> Intern { get; set; }
         public virtual Organization Organization { get; set; }

@@ -37,7 +37,7 @@ namespace WebQLThucTapSinh.Models
         public Nullable<int> ExpiryDate { get; set; }
         public Nullable<bool> Status { get; set; }
         public Nullable<bool> SendEmail { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InternShip> InternShip { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
