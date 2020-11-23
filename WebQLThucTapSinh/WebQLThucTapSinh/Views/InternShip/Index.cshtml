@@ -96,8 +96,8 @@
         </div>
         <div class="col-md-4 ban2">
             <div class="row">
-                @{ @*var name = Convert.ToInt32(@Session["InternshipID"]);*@
-                var name = 1;
+                @{ 
+                    var name = Convert.ToInt32(@Session["InternshipID"]);
                 }
                 <h2 style="width: 100%;text-align: center;">Danh sách bài học <br /> @database.InternShip.Find(name).CourseName</h2>
                 @ViewBag.ERR

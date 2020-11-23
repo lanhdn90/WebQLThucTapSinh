@@ -14,38 +14,39 @@ namespace WebQLThucTapSinh.Controllers
         public ActionResult Index()
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            //var company = Session["CompanyID"].ToString();
-            var company = "ASDFGHJR";
-            var list = (from a in database.Person
-                        join b in database.Organization on a.CompanyID equals b.ID
-                        where a.CompanyID == company && a.RoleID == 3
-                        select new RepresentativeClass()
-                        {
-                            SchoolID = a.SchoolID,
-                            Fax = b.Fax,
-                            Address = b.Address,
-                            Phone = b.Phone,
-                            Email = b.Email,
-                            Status = b.Status,
-                        }).ToList();
-            List<RepresentativeClass> listFaculty = new List<RepresentativeClass>();
-            foreach (var item in list)
+            //var id = Session["Person"].ToString();
+            var id = "ZXCVBUML";
+            var list = database.Organization.Where(x=>x.PersonID == id).ToList();
+            var companyID = database.Person.Find(id).CompanyID;
+            list.Remove(list.SingleOrDefault(x=>x.ID == companyID));
+            return View(list);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Organization organization)
+        {
+            if (ModelState.IsValid)
             {
-                var count = list.Where(x => x.SchoolID == item.SchoolID).Count();
-                if(count == 1)
+                //var id = Session["Person"].ToString();
+                var id = "ZXCVBUML";
+                organization.PersonID = id;
+                if (new Share().InsertOrganization(organization))
                 {
-                    listFaculty.Add(item);
+                    ModelState.AddModelError("", "Thêm Khoa thành công");
                 }
                 else
                 {
-                    var number = listFaculty.Where(x => x.SchoolID == item.SchoolID).Count();
-                    if(number == 0)
-                    {
-                        listFaculty.Add(item);
-                    }
+                    ModelState.AddModelError("", "Thêm Khoa thất bại");
                 }
             }
-            return View(listFaculty);
+            return View("Create");
         }
+
     }
 }

@@ -19,8 +19,8 @@ namespace WebQLThucTapSinh.Models
         public Organization()
         {
             this.InternShip = new HashSet<InternShip>();
-            this.Person = new HashSet<Person>();
             this.Person1 = new HashSet<Person>();
+            this.Person2 = new HashSet<Person>();
         }
     
         public string ID { get; set; }
@@ -37,12 +37,14 @@ namespace WebQLThucTapSinh.Models
         public Nullable<int> ExpiryDate { get; set; }
         public Nullable<bool> Status { get; set; }
         public Nullable<bool> SendEmail { get; set; }
-
+        public string PersonID { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InternShip> InternShip { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person> Person { get; set; }
+        public virtual Person Person { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Person> Person1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Person> Person2 { get; set; }
     }
 }

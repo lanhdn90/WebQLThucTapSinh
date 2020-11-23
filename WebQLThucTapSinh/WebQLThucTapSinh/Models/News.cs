@@ -21,7 +21,7 @@ namespace WebQLThucTapSinh.Models
         [AllowHtml]
         public string Note { get; set; }
         public string Image { get; set; }
-        public DateTime Postdate { get; set; }
+        public Nullable<System.DateTime> Postdate { get; set; }
     
         public virtual Person Person { get; set; }
     }

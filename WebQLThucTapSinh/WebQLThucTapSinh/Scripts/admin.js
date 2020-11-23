@@ -148,7 +148,6 @@ $(document).ready(function(){
         }
     });
 
-
     var id;
     $('.idSort').mouseover(function () {
         //var sort = $('#sort option:selected').text();;
@@ -194,5 +193,67 @@ $(document).ready(function(){
                 window.location.reload();
             }
         });
+    });
+
+    $('.btn-active1').off('click').on('click', function (e) {
+        e.preventDefault();
+        var btn = $(this)
+        var id = btn.data('id');
+        $.ajax({
+            url: '/Leader/ChangeStatus',
+            data: { id: id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    btn.text('Kích hoạt');
+                } else {
+                    btn.text('Khóa');
+                }
+                window.location.reload();
+            }
+        });
+    });
+
+    $('.btn-active2').off('click').on('click', function (e) {
+        e.preventDefault();
+        var btn = $(this)
+        var id = btn.data('id');
+        $.ajax({
+            url: '/Representative/ChangeStatus',
+            data: { id: id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    btn.text('Kích hoạt');
+                } else {
+                    btn.text('Khóa');
+                }
+                window.location.reload();
+            }
+        });
+    });
+
+    $(".deleteRepresentative").off('click').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có chắc muốn xóa giáo vụ ' + name + ' hay không ?');
+        if (r == true) {
+            $.ajax({
+                url: '/Representative/Delete',
+                data: { id: id },
+                type: 'POST',
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    alert(json);
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Đã xảy ra lỗi" + err.responseText);
+                }
+            });
+        }
     });
 });

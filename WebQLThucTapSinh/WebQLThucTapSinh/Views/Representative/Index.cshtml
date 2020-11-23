@@ -23,22 +23,22 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>@item.FullName</td>
-                <td>@item.Phone</td>
-                <td>@item.Email</td>
-                <td>@item.Fax</td>
-                <td>
-                    @if (item.Status == true)
-                    {<a href="#" class="btn-active" data-id="@item.Status">Kích hoạt </a>}
-                    else
-                    { <a href="#" class="btn-active" data-id="@item.Status">Khóa </a>}
-                </td>
-                <td>
-                    <a href="/Question/Edit/@item.PersonID" class="btn btn-warning">Sửa</a>||
-                    <a data-id="@item.PersonID" data-name="@item.FullName" class="deleteQuestion btn btn-danger">Xóa</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@item.FullName</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+                    <td>@item.Fax</td>
+                    <td>
+                        @if (item.Status == true)
+                        {<a href="#" class="btn-active2" data-id="@item.PersonID">Kích hoạt </a>}
+                        else
+                        { <a href="#" class="btn-active2" data-id="@item.PersonID">Khóa </a>}
+                    </td>
+                    <td>
+                        <a href="/Representative/Edit/@item.PersonID" class="btn btn-warning">Sửa</a>||
+                        <a data-id="@item.PersonID" data-name="@item.FullName" class="deleteRepresentative btn btn-danger">Xóa</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -46,4 +46,3 @@
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/admin.js"></script>
-

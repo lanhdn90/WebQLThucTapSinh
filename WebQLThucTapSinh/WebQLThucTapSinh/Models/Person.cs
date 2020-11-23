@@ -19,6 +19,7 @@ namespace WebQLThucTapSinh.Models
         {
             this.InternShip = new HashSet<InternShip>();
             this.News = new HashSet<News>();
+            this.Organization = new HashSet<Organization>();
             this.Users = new HashSet<Users>();
             this.Task = new HashSet<Task>();
         }
@@ -41,8 +42,10 @@ namespace WebQLThucTapSinh.Models
         public virtual ICollection<InternShip> InternShip { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }
-        public virtual Organization Organization { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Organization> Organization { get; set; }
         public virtual Organization Organization1 { get; set; }
+        public virtual Organization Organization2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
         public virtual Role Role { get; set; }

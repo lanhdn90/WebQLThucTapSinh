@@ -5,9 +5,9 @@
     WebDatabaseEntities database = new WebDatabaseEntities();
 }
 @using WebQLThucTapSinh.Models;
-@model List<WebQLThucTapSinh.Common.RepresentativeClass>
-<a style="margin-top: 12px" href="/Representative/Create" id="them" class="them btn btn-outline btn-primary">Thêm</a>
-<div class="text-primary" style="text-align:center"><h2>DANH SÁCH GIÁO VỤ</h2></div>
+@model List<WebQLThucTapSinh.Models.Organization>
+<a style="margin-top: 12px" href="/Faculty/Create" id="them" class="them btn btn-outline btn-primary">Thêm</a>
+<div class="text-primary" style="text-align:center"><h2>DANH SÁCH KHOA</h2></div>
 <div class="dataTable_wrapper">
     <table class="table table-striped table-bordered table-hover" id="table">
         <thead>
@@ -24,11 +24,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        <a href="/Representative/Index/@item.SchoolID">
-                            @database.Organization.SingleOrDefault(x => x.ID == @item.SchoolID).Name
-                        </a>
-                    </td>
+                    <td><a  href="/Representative/Index/@item.ID">@item.Name</a></td>
                     <td>@item.Phone</td>
                     <td>@item.Email</td>
                     <td>@item.Fax</td>
@@ -39,8 +35,8 @@
                         { <a href="#" class="btn-active" data-id="@item.Status">Khóa </a>}
                     </td>
                     <td>
-                        <a href="/Faculty/Edit/@item.SchoolID" class="btn btn-warning">Sửa</a>||
-                        <a data-id="@item.SchoolID" data-name="@database.Organization.SingleOrDefault(x=>x.ID == @item.SchoolID).Name" class="deleteFaculty btn btn-danger">Xóa</a>
+                        <a href="/Faculty/Edit/@item.ID" class="btn btn-warning">Sửa</a>||
+                        <a data-id="@item.ID" data-name="@item.Name" class="deleteFaculty btn btn-danger">Xóa</a>
                     </td>
                 </tr>
             }

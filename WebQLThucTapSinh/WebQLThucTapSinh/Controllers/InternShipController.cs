@@ -19,7 +19,7 @@ namespace WebQLThucTapSinh.Controllers
             if (id == 0)
             {
                 id = model.KhoaHocCoQuanly[0].InternshipID;
-
+                Session["InternshipID"] = id;
             }
             else
             {
@@ -59,7 +59,7 @@ namespace WebQLThucTapSinh.Controllers
         public List<TaskDatabase> ListTask(int id)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            var l = (from a in Tasks(id)
+            var l = (from a in database.Task
                      join b in database.IntershipWithTask on a.TaskID equals b.TaskID
                      where b.InternshipID == id
                      select new TaskDatabase

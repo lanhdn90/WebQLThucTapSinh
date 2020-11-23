@@ -155,11 +155,26 @@
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\LeaderController.cs" />
     <Compile Include="Controllers\RepresentativeController.cs" />
+    <Compile Include="Models\connectDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>connectDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\connectDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\connectDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>connectDatabase.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Intern.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InternShip.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InternShipViewModel.cs" />
     <Compile Include="Common\QuestionClass.cs" />
@@ -173,49 +188,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IntershipWithTask.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\News.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Organization.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Task.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TestResults.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebDatabaseEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebDatabaseEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebDatabaseEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebDatabaseEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
+      <DependentUpon>connectDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -3014,15 +3014,15 @@
     <Content Include="Images\file excel\excel4.png" />
     <Content Include="Images\file excel\excel5.jpg" />
     <Content Include="Images\logo.png" />
-    <Content Include="Models\WebDatabaseEntities.Context.tt">
+    <Content Include="Models\connectDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
-      <LastGenOutput>WebDatabaseEntities.Context.cs</LastGenOutput>
+      <DependentUpon>connectDatabase.edmx</DependentUpon>
+      <LastGenOutput>connectDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\WebDatabaseEntities.tt">
+    <Content Include="Models\connectDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
-      <LastGenOutput>WebDatabaseEntities.cs</LastGenOutput>
+      <DependentUpon>connectDatabase.edmx</DependentUpon>
+      <LastGenOutput>connectDatabase.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3128,12 +3128,12 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\Lato-Regular.ttf" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <EntityDeploy Include="Models\WebDatabaseEntities.edmx">
+    <EntityDeploy Include="Models\connectDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebDatabaseEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>connectDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\WebDatabaseEntities.edmx.diagram">
-      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
+    <Content Include="Models\connectDatabase.edmx.diagram">
+      <DependentUpon>connectDatabase.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
@@ -3190,6 +3190,9 @@
     <Content Include="Views\Leader\Delete.cshtml" />
     <Content Include="Views\Representative\Index.cshtml" />
     <Content Include="Views\Faculty\Index.cshtml" />
+    <Content Include="Views\Representative\Create.cshtml" />
+    <Content Include="Views\Representative\Edit.cshtml" />
+    <Content Include="Views\Faculty\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

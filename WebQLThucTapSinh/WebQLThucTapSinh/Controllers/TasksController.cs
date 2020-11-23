@@ -69,8 +69,6 @@ namespace WebQLThucTapSinh.Controllers
             //Sau khi làm sprint Login thì mở lại
             //var id = Session["Person"].ToString();
             var id = "ZXCKBHML";
-            // Lấy roleID
-            //var r = Convert.ToInt32(Session["Role"].ToString());
             var find = database.Person.Find(id);
             return database.InternShip.Where(x => x.CompanyID == find.CompanyID).ToList();
         }
