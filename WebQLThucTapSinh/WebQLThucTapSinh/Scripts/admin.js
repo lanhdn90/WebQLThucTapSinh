@@ -256,4 +256,48 @@ $(document).ready(function(){
             });
         }
     });
+
+    $('.btn-active3').off('click').on('click', function (e) {
+        e.preventDefault();
+        var btn = $(this)
+        var id = btn.data('id');
+        var name = $(this).data('name');
+        $.ajax({
+            url: '/Faculty/ChangeStatus',
+            data: { id: id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    btn.text('Kích hoạt');
+                    alert('Chú ý: Bạn cần kích hoạt (hoặc thêm mới) lại giáo vụ của ' + name);
+                } else {
+                    btn.text('Khóa');
+                }
+                window.location.reload();
+            }
+        });
+    });
+
+    $(".deleteFaculty").off('click').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có chắc muốn xóa ' + name + ' hay không ?');
+        if (r == true) {
+            $.ajax({
+                url: '/Faculty/Delete',
+                data: { id: id },
+                type: 'POST',
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    alert(json);
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Đã xảy ra lỗi" + err.responseText);
+                }
+            });
+        }
+    });
 });

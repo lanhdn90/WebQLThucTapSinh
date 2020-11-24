@@ -35,7 +35,7 @@ namespace WebQLThucTapSinh.Models
         public string Email { get; set; }
         public Nullable<System.DateTime> StartDay { get; set; }
         public Nullable<int> ExpiryDate { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
         public Nullable<bool> SendEmail { get; set; }
         public string PersonID { get; set; }
     

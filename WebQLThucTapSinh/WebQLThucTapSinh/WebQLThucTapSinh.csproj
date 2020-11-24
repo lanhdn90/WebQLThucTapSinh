@@ -3193,6 +3193,7 @@
     <Content Include="Views\Representative\Create.cshtml" />
     <Content Include="Views\Representative\Edit.cshtml" />
     <Content Include="Views\Faculty\Create.cshtml" />
+    <Content Include="Views\Faculty\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

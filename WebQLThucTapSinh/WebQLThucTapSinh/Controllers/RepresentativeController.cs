@@ -196,44 +196,6 @@ namespace WebQLThucTapSinh.Controllers
             return View("Edit");
         }
 
-
-        public bool DeleteQuestion(int id)
-        {
-            try
-            {
-                WebDatabaseEntities database = new WebDatabaseEntities();
-                //Đếm table quesition có báo nhiêu row
-                var count = database.Question.ToList().Count;
-                // kiểm tra count và id có bằng nhau không
-                if (count == id)
-                {
-                    database.Question.Remove(database.Question.Find(id));
-                }
-                else
-                {
-                    var modelend = database.Question.Find(count);
-                    // Tìm model
-                    var model = database.Question.Find(id);
-                    // remove model đối đối tượng chứ không phải remove id
-                    model.TaskID = modelend.TaskID;
-                    model.Content = modelend.Content;
-                    model.Answer = modelend.Answer;
-                    model.A = modelend.A;
-                    model.B = modelend.B;
-                    model.C = modelend.C;
-                    model.D = modelend.D;
-                    database.Question.Remove(modelend);
-                }
-                database.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
-        }
-
         // Chú ý Method này được gọi trong file JS admin
         [HttpPost]
         public ActionResult Delete(string id)

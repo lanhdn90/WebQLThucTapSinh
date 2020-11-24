@@ -121,5 +121,79 @@ namespace WebQLThucTapSinh.Common
             }
         }
 
+        public bool ChangeStatusUser(string id, int roleId)
+        {
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var com = database.Organization.SingleOrDefault(x => x.ID == id);
+            if (com.Status == true)
+            {
+                var listPerson = database.Person.Where(x => x.SchoolID == id && x.RoleID == roleId).ToList();
+                if(listPerson != null)
+                {
+                    foreach (var item in listPerson)
+                    {
+                        var model = database.Users.SingleOrDefault(a => a.PersonID == item.PersonID);
+                        if(model.Status == true)
+                        {
+                            model.Status = false;
+                            database.SaveChanges();
+                        }
+                    }
+                    
+                }
+                com.Status = false;
+            }
+            else
+            {
+                com.Status = true;
+
+            }
+            database.SaveChanges();
+            return com.Status;
+        }
+
+        public bool UpdateOrganization(Organization faculty, int roileId)
+        {
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var model = database.Organization.SingleOrDefault(x => x.ID == faculty.ID);
+            //roileId = 1 là Faculty
+            if (roileId == 1)
+            {
+                try
+                {
+                    model.Name = faculty.Name;
+                    model.Phone = faculty.Phone;
+                    model.Fax = faculty.Fax;
+                    model.Email = faculty.Email;
+                    database.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+                
+            }
+            else
+            {
+                try
+                {
+                    model.Name = faculty.Name;
+                    model.Address = faculty.Address;
+                    model.Phone = faculty.Phone;
+                    model.Fax = faculty.Fax;
+                    model.Image = faculty.Image;
+                    model.Logo = faculty.Logo;
+                    model.Note = faculty.Note;
+                    model.Email = faculty.Email;
+                    database.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

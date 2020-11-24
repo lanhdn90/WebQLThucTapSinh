@@ -30,9 +30,9 @@
                     <td>@item.Fax</td>
                     <td>
                         @if (item.Status == true)
-                        {<a href="#" class="btn-active" data-id="@item.Status">Kích hoạt </a>}
+                        {<a href="#" class="btn-active3" data-id="@item.ID" data-name="@item.Name">Kích hoạt </a>}
                         else
-                        { <a href="#" class="btn-active" data-id="@item.Status">Khóa </a>}
+                        { <a href="#" class="btn-active3" data-id="@item.ID" data-name="@item.Name">Khóa </a>}
                     </td>
                     <td>
                         <a href="/Faculty/Edit/@item.ID" class="btn btn-warning">Sửa</a>||

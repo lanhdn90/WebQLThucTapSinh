@@ -108,6 +108,29 @@ namespace WebQLThucTapSinh.Common
             }
         }
 
+        public bool UpdateIntern(string schoolId, string newSchoolID)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var listIntern = database.Person.Where(x => x.SchoolID == schoolId && x.RoleID == 5).ToList();
+                if (listIntern != null)
+                {
+                    foreach (var item in listIntern)
+                    {
+                        item.SchoolID = newSchoolID;
+                    }
+                    database.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
         public bool DeletePerson(string id)
         {
             try
