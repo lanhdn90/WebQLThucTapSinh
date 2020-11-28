@@ -300,4 +300,70 @@ $(document).ready(function(){
             });
         }
     });
+
+
+    var task;
+    $('.btn-active4').off('click').on('click', function (e) {
+        e.preventDefault();
+        var btn = $(this)
+        var id = btn.data('id');
+        $.ajax({
+            url: '/Company/ChangeStatus',
+            data: { id: id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    btn.text('Kích hoạt');
+                } else {
+                    btn.text('Khóa');
+                }
+            }
+        });
+    });
+
+    $('.idSort1').mouseover(function () {
+        task = $(this).data('ids');
+    });
+
+    $('.gender').change(function () {
+        var valu = $(this).val();
+        $.ajax({
+            type: 'GET',
+            data: {
+                id: task,
+                val: valu,
+            },
+            url: '/Company/extension',
+            success: function (result) {
+                if (result == 'True') {
+                    window.location.href = '/Company/Index/';
+                } else {
+                    alert("Gia hạn thất bại");
+                }
+            }
+        });
+    });
+
+    $(".deleteCompany").off('click').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có chắc muốn xóa công ty ' + name + ' hay không ?');
+        if (r == true) {
+            $.ajax({
+                url: '/Company/Delete',
+                data: { id: id },
+                type: 'POST',
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    alert(json);
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Đã xảy ra lỗi" + err.responseText);
+                }
+            });
+        }
+    });
 });

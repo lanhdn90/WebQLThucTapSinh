@@ -212,6 +212,7 @@ namespace WebQLThucTapSinh.Controllers
             }
         }
 
+        //Xóa 1 bài học
         public int DeleteTask(int id)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();

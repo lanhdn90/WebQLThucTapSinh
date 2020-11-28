@@ -34,9 +34,17 @@ namespace WebQLThucTapSinh.Controllers
         {
             if (ModelState.IsValid)
             {
+                WebDatabaseEntities database = new WebDatabaseEntities();
                 //var id = Session["Person"].ToString();
                 var id = "ZXCVBUML";
                 organization.PersonID = id;
+                //var company = Session["CompanyID"].ToString();
+                var company = "ASDFGHJR";
+                var model = database.Organization.SingleOrDefault(x => x.ID == company);
+                organization.StartDay = model.StartDay;
+                organization.ExpiryDate = model.ExpiryDate;
+                organization.Status = true;
+                organization.SendEmail = false;
                 if (new Share().InsertOrganization(organization))
                 {
                     ModelState.AddModelError("", "Thêm Khoa thành công");
@@ -94,7 +102,7 @@ namespace WebQLThucTapSinh.Controllers
             {
                 try
                 {
-                    WebDatabaseEntities database = new WebDatabaseEntities();
+                        WebDatabaseEntities database = new WebDatabaseEntities();
                     var list = database.Person.Where(x => x.SchoolID == id && x.RoleID == 3).ToList();
                     if (list != null)
                     {

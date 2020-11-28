@@ -8,7 +8,7 @@ namespace WebQLThucTapSinh.Common
     public class QuestionClass
     {
         public int? QuestionID { get; set; }
-        public Nullable<int> TaskID { get; set; }
+        public int TaskID { get; set; }
         public string Content { get; set; }
         public string Answer { get; set; }
         public string A { get; set; }

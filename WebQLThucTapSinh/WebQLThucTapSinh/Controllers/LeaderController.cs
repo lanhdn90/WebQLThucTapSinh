@@ -311,21 +311,9 @@ namespace WebQLThucTapSinh.Controllers
 
         public bool ChangeStatusLeader(string id)
         {
-            WebDatabaseEntities database = new WebDatabaseEntities();
-            var com = database.Users.SingleOrDefault(x => x.PersonID == id);
-            if (com.Status == true)
-            {
-                com.Status = false;
-                ChangeStatusInternShip(id, false);
-            }
-            else
-            {
-                com.Status = true;
-                ChangeStatusInternShip(id, true);
-
-            }
-            database.SaveChanges();
-            return com.Status;
+            bool status = new Share().ChangeStatusUser(id);
+            ChangeStatusInternShip(id, status);
+            return status;
 
         }
 

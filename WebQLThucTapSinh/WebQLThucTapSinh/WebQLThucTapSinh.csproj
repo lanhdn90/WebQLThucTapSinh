@@ -152,6 +152,7 @@
     <Compile Include="Common\LeaderClass.cs" />
     <Compile Include="Common\RepresentativeClass.cs" />
     <Compile Include="Common\Share.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\LeaderController.cs" />
     <Compile Include="Controllers\RepresentativeController.cs" />
@@ -3194,6 +3195,9 @@
     <Content Include="Views\Representative\Edit.cshtml" />
     <Content Include="Views\Faculty\Create.cshtml" />
     <Content Include="Views\Faculty\Edit.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\Create.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

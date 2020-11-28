@@ -171,15 +171,16 @@ namespace WebQLThucTapSinh.Controllers
             var model = "QWERTFGH";
             var list = database.Person.Where(x => x.CompanyID == model && x.RoleID == 4).ToList();
             var listLeader = new List<LeaderClass>();
-            LeaderClass leader = new LeaderClass();
+            
             foreach (var item in list)
             {
+                LeaderClass leader = new LeaderClass();
                 leader.FullName = item.LastName + " " + item.FirstName;
                 leader.PersonID = item.PersonID;
                 listLeader.Add(leader);
             }
-            SelectList ListLeader = new SelectList(listLeader, "PersonID", "FullName");
-            ViewBag.ListLeader = ListLeader;
+            SelectList Listleader = new SelectList(listLeader, "PersonID", "FullName");
+            ViewBag.ListLeader = Listleader;
         }
 
         public ActionResult Edit(int id)
@@ -276,14 +277,38 @@ namespace WebQLThucTapSinh.Controllers
             }
         }
 
+        public void deleteInternShip(int id)
+        {
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var count = database.InternShip.ToList().Count();
+            var modelend = database.InternShip.SingleOrDefault(x => x.InternshipID == count);
+            var model = database.InternShip.SingleOrDefault(c => c.InternshipID == id);
+            model.CourseName = modelend.CourseName;
+            model.Note = modelend.Note;
+            model.PersonID = modelend.PersonID;
+            model.CompanyID = modelend.CompanyID;
+            model.StartDay = modelend.StartDay;
+            model.ExpiryDate = modelend.ExpiryDate;
+            model.Status = modelend.Status;
+            var list = database.IntershipWithTask.Where(a => a.InternshipID == count).ToList();
+            if(list != null)
+            {
+                foreach(var item in list)
+                {
+                   database.IntershipWithTask.Find(item.ID).InternshipID = id;
+                }
+                database.SaveChanges();
+            }
+            database.InternShip.Remove(modelend);
+            database.SaveChanges();
+        }
+
         public int DeleteInternShip(int id)
         {
             Company company = new Company();
             if (company.DeleteListIntershipWithTask(0, id) && company.UpdateIntern(id))
             {
-                WebDatabaseEntities database = new WebDatabaseEntities();
-                database.InternShip.Remove(database.InternShip.Find(id));
-                database.SaveChanges();
+                deleteInternShip(id);
                 return 1;
             }
             else
