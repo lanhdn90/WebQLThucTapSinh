@@ -149,5 +149,46 @@ namespace WebQLThucTapSinh.Controllers
             return this.Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public bool deleteFaculty(string id)
+        {
+            var re = new Share().UpdateIntern(id, null);
+            if (re == true)
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var list = database.Person.Where(x => x.SchoolID == id && x.RoleID == 3).ToList();
+                if (list != null)
+                {
+                    foreach (var item in list)
+                    {
+                        new Share().DeletePerson(item.PersonID);
+                    }
+                }
+                return (new Company().deleteOrganzation(id));
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteListFaculty(string id)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var school = database.Person.SingleOrDefault(c => c.CompanyID == id && c.RoleID == 6);
+                var list = database.Organization.Where(x => x.PersonID == school.PersonID).ToList();
+                list.Remove(list.SingleOrDefault(x => x.ID == id));
+                foreach (var item in list)
+                {
+                    deleteFaculty(item.ID);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

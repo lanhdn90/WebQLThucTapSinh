@@ -117,9 +117,19 @@ namespace WebQLThucTapSinh.Common
                 var listIntern = database.Person.Where(x => x.SchoolID == schoolId && x.RoleID == 5).ToList();
                 if (listIntern != null)
                 {
-                    foreach (var item in listIntern)
+                    if(newSchoolID != null)
                     {
-                        item.SchoolID = newSchoolID;
+                        foreach (var item in listIntern)
+                        {
+                            item.SchoolID = newSchoolID;
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in listIntern)
+                        {
+                            item.SchoolID = null;
+                        }
                     }
                     database.SaveChanges();
                 }
@@ -195,21 +205,10 @@ namespace WebQLThucTapSinh.Common
             WebDatabaseEntities database = new WebDatabaseEntities();
             List<Person> listPerson = database.Person.Where(x => x.RoleID == roleid).ToList();
             List<Organization> listOrgan = new List<Organization>();
-            if (roleid == 2)
+            foreach (var item in listPerson)
             {
-                foreach (var item in listPerson)
-                {
-                    var model = database.Organization.Find(item.CompanyID);
-                    listOrgan.Add(model);
-                }
-            }
-            else
-            {
-                foreach (var item in listPerson)
-                {
-                    var model = database.Organization.Find(item.SchoolID);
-                    listOrgan.Add(model);
-                }
+                var model = database.Organization.Find(item.CompanyID);
+                listOrgan.Add(model);
             }
             return listOrgan;
         }
@@ -306,6 +305,36 @@ namespace WebQLThucTapSinh.Common
                 return false;
             }
         }
+
+        public bool Extension(string id, int val)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var list = database.Organization.Where(x=>x.PersonID == id).ToList();
+                foreach(var item in list)
+                {
+                    if (item.Status == true)
+                    {
+                        item.ExpiryDate += +val;
+                    }
+                    else
+                    {
+                        item.StartDay = DateTime.Now;
+                        item.ExpiryDate = val;
+                        item.SendEmail = false;
+                        new Share().ChangeStatus(id, 2);
+                    }
+                    database.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
     }
 }

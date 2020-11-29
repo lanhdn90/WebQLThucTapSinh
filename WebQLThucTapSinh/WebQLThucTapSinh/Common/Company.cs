@@ -283,7 +283,7 @@ namespace WebQLThucTapSinh.Common
                     }
                     else
                     {
-                        person.RoleID = 3;
+                        person.RoleID = 6;
                         if (share.InsertPerson(person))
                         {
                             database.Organization.Find(comID).PersonID = personID;

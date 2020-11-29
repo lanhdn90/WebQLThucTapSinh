@@ -14,7 +14,7 @@
                 <th class="th">Địa chỉ</th>
                 <th class="th">Điện thoại</th>
                 <th class="th">Email</th>
-                <th class="th">Ngày bắt đầu</th>
+                <th class="th">Ngày hết hạn</th>
                 <th class="th">Trạng thái</th>
                 <th class="th">Gia hạn</th>
                 <th class="th">Hoạt động</th>
@@ -29,7 +29,7 @@
                     <td>@item.Phone</td>
 
                     <td>@item.Email</td>
-                    <td>@Html.FormatValue(@item.StartDay, "{0:dd/MM/yyyy}")</td>
+                    <td>@Html.FormatValue(@item.StartDay.AddMonths(item.ExpiryDate), "{0:dd/MM/yyyy}")</td>
                     <td>
                         @if (item.Status == true)
                         {<a href="#" class="btn-active4" data-id="@item.ID">Kích hoạt </a>}

@@ -48,20 +48,8 @@ namespace WebQLThucTapSinh.Controllers
             try
             {
                 WebDatabaseEntities database = new WebDatabaseEntities();
-                var model = database.Organization.Find(id);
-                if (model.Status == true)
-                {
-                    model.ExpiryDate += +val;
-                }
-                else
-                {
-                    model.StartDay = DateTime.Now;
-                    model.ExpiryDate = val;
-                    model.SendEmail = false;
-                    new Share().ChangeStatus(id, 2);
-                }
-                database.SaveChanges();
-                return true;
+                var model = database.Person.SingleOrDefault(x => x.CompanyID == id && x.RoleID == 2);
+                return (new Share().Extension(model.PersonID, val));
             }
             catch
             {

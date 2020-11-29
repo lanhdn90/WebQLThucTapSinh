@@ -366,4 +366,69 @@ $(document).ready(function(){
             });
         }
     });
+
+    $('.btn-active5').off('click').on('click', function (e) {
+        e.preventDefault();
+        var btn = $(this)
+        var id = btn.data('id');
+        $.ajax({
+            url: '/School/ChangeStatus',
+            data: { id: id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    btn.text('Kích hoạt');
+                } else {
+                    btn.text('Khóa');
+                }
+            }
+        });
+    });
+
+    $('.idSort2').mouseover(function () {
+        task = $(this).data('ids');
+    });
+
+    $('.gender-1').change(function () {
+        var valu = $(this).val();
+        $.ajax({
+            type: 'GET',
+            data: {
+                id: task,
+                val: valu,
+            },
+            url: '/School/extension',
+            success: function (result) {
+                if (result == 'True') {
+                    window.location.href = '/School/Index/';
+                } else {
+                    alert("Gia hạn thất bại");
+                }
+            }
+        });
+    });
+
+    $(".deleteSchool").off('click').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có chắc muốn xóa trườngn ' + name + ' hay không ?');
+        if (r == true) {
+            $.ajax({
+                url: '/School/Delete',
+                data: { id: id },
+                type: 'POST',
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    alert(json);
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Đã xảy ra lỗi" + err.responseText);
+                }
+            });
+        }
+    });
+
 });
