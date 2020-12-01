@@ -11,14 +11,12 @@ namespace WebQLThucTapSinh.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Mvc;
-
+    
     public partial class News
     {
         public int ID { get; set; }
         public string PersonID { get; set; }
         public string Header { get; set; }
-        [AllowHtml]
         public string Note { get; set; }
         public string Image { get; set; }
         public Nullable<System.DateTime> Postdate { get; set; }

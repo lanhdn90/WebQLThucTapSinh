@@ -39,6 +39,7 @@
       <EntityTypeMapping TypeName="WebDatabaseModel.Menu">
         <MappingFragment StoreEntitySet="Menu">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
           <ScalarProperty Name="TextMenu" ColumnName="TextMenu" />
           <ScalarProperty Name="Link" ColumnName="Link" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
@@ -73,6 +74,7 @@
           <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="SendEmail" ColumnName="SendEmail" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

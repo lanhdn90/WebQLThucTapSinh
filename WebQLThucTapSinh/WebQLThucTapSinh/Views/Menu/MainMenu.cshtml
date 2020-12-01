@@ -1,0 +1,13 @@
+﻿@model List<WebQLThucTapSinh.Models.Menu>
+<nav id="sidebar">
+    <ul class="nav" id="side-menu">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@item.Link"><i class="@item.Icon"></i>@item.TextMenu</a>
+            </li>
+        }
+
+    </ul>
+
+</nav>

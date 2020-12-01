@@ -20,14 +20,12 @@ namespace WebQLThucTapSinh.Controllers
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             // Lấy roleID
-            //var role = Convert.ToInt32(Session["Role"].ToString());
+            var role = Convert.ToInt32(Session["Role"].ToString());
             // Đối với Leader
-            var role = 2;
             if (role == 4)
             {
                 //Sau khi làm sprint Login thì mở lại
-                //var personID = Session["Person"].ToString();
-                var personID = "ZXCKBHML";
+                var personID = Session["Person"].ToString();
                 var list = (from a in database.Person
                             join c in database.Task on a.PersonID equals c.PersonID
                             join d in database.Question on c.TaskID equals d.TaskID
@@ -53,8 +51,7 @@ namespace WebQLThucTapSinh.Controllers
             else
             {
                 //Sau khi làm sprint Login thì mở lại
-                //var companyID = Session["CompanyID"].ToString();
-                var companyID = "QWERTFGH";
+                var companyID = Session["CompanyID"].ToString();
                 var list = (from a in database.Person
                             join c in database.Task on a.PersonID equals c.PersonID
                             join d in database.Question on c.TaskID equals d.TaskID
@@ -88,8 +85,7 @@ namespace WebQLThucTapSinh.Controllers
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             //Sau khi làm sprint Login thì mở lại
-            //var personID = Session["Person"].ToString();
-            var personID = "ZXCKBHML";
+            var personID = Session["Person"].ToString();
             List<Task> Task = database.Task.Where(x => x.PersonID == personID).ToList();
             if(id == 1)
             {
@@ -151,7 +147,6 @@ namespace WebQLThucTapSinh.Controllers
         [HttpPost]
         public ActionResult CreateExcel(HttpPostedFileBase excelfile, int taskID)
         {
-            //var personID = Session["Person"].ToString();
             // Kiểm tra file đó có tồn tại hay không
             if (excelfile == null || excelfile.ContentLength == 0)
             {

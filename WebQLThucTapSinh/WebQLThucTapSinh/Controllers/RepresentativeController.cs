@@ -18,8 +18,7 @@ namespace WebQLThucTapSinh.Controllers
         public ActionResult Index(string id)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            //var company = Session["CompanyID"].ToString();
-            var company = "ASDFGHJR";
+            var company = Session["CompanyID"].ToString();
             var list = (from a in database.Person
                         join b in database.Users on a.PersonID equals b.PersonID
                         join c in database.Organization on a.CompanyID equals c.ID
@@ -71,8 +70,7 @@ namespace WebQLThucTapSinh.Controllers
         public void SetViewBagFaculty(string selectedID = null)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            //var id = Session["Person"].ToString();
-            var id = "ZXCVBUML";
+            var id = Session["Person"].ToString();
             var list = database.Organization.Where(x => x.PersonID == id).ToList();
             var companyID = database.Person.Find(id).CompanyID;
             list.Remove(list.SingleOrDefault(x => x.ID == companyID));
@@ -100,8 +98,7 @@ namespace WebQLThucTapSinh.Controllers
                 person.Address = Representative.Address;
                 person.Phone = Representative.Phone;
                 person.Email = Representative.Email;
-                //person.CompanyID = Session["CompanyID"].ToString();
-                person.CompanyID = "ASDFGHJR";
+                person.CompanyID = Session["CompanyID"].ToString();
                 person.SchoolID = Representative.SchoolID;
                 if (new Share().InsertPerson(person))
                 {

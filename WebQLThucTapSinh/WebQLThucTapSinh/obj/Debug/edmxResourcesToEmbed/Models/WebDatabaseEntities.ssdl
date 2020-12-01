@@ -36,6 +36,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Icon" Type="varchar" MaxLength="250" />
     <Property Name="TextMenu" Type="nvarchar" MaxLength="250" />
     <Property Name="Link" Type="varchar" MaxLength="250" />
     <Property Name="RoleID" Type="int" />
@@ -68,6 +69,7 @@
     <Property Name="ExpiryDate" Type="int" />
     <Property Name="Status" Type="bit" />
     <Property Name="SendEmail" Type="bit" />
+    <Property Name="PersonID" Type="varchar" MaxLength="8" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -244,6 +246,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Organization_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonID" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Person_Company">
     <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
     <End Role="Person" Type="Self.Person" Multiplicity="*" />
@@ -376,6 +390,10 @@
     <AssociationSet Name="FK_News_Person" Association="Self.FK_News_Person">
       <End Role="Person" EntitySet="Person" />
       <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_Person" Association="Self.FK_Organization_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Organization" EntitySet="Organization" />
     </AssociationSet>
     <AssociationSet Name="FK_Person_Company" Association="Self.FK_Person_Company">
       <End Role="Organization" EntitySet="Organization" />

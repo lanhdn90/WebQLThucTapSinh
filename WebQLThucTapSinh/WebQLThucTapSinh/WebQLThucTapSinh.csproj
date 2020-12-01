@@ -150,33 +150,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Company.cs" />
     <Compile Include="Common\LeaderClass.cs" />
+    <Compile Include="Common\MaHoaMd5.cs" />
     <Compile Include="Common\RepresentativeClass.cs" />
     <Compile Include="Common\Share.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\LeaderController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\RepresentativeController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
-    <Compile Include="Models\connectDatabase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>connectDatabase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\connectDatabase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>connectDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\connectDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>connectDatabase.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Intern.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InternShip.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InternShipViewModel.cs" />
     <Compile Include="Common\QuestionClass.cs" />
@@ -190,34 +178,49 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IntershipWithTask.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\News.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Organization.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Task.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TestResults.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>connectDatabase.tt</DependentUpon>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebDatabaseEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebDatabaseEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebDatabaseEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebDatabaseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebDatabaseEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2957,11 +2960,30 @@
     <Content Include="Content\fontawesome-free-5.15.1-web\webfonts\fa-brands-400.svg" />
     <Content Include="Content\fontawesome-free-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="Content\fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Home\CV.css" />
+    <Content Include="Content\Home\index.css" />
+    <Content Include="Content\Home\index2.css" />
+    <Content Include="Content\Home\index3.css" />
+    <Content Include="Content\Home\index5.css" />
+    <Content Include="Content\Home\index6.css" />
+    <Content Include="Content\Home\nav.css" />
+    <Content Include="Content\Home\style.css" />
+    <Content Include="Content\Home\styleCV.css" />
+    <Content Include="Content\Home\styleDangki.css" />
+    <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\main-stylesheet.css" />
     <Content Include="Content\memenu.css" />
     <Content Include="Content\metisMenu.css" />
+    <Content Include="Content\owl.carousel.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\sb-admin-2.css" />
+    <Content Include="Content\slicknav.min.css" />
+    <Content Include="Content\slick\fonts\slick.svg" />
+    <Content Include="Content\slick\slick-theme.css" />
+    <Content Include="Content\slick\slick.css" />
+    <Content Include="Content\slick\slick.js" />
+    <Content Include="Content\slick\slick.min.js" />
+    <Content Include="Content\slide.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -3004,27 +3026,75 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Email\GopY.html" />
     <Content Include="Email\SendEmailPerson.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\about-pic.jpg" />
+    <Content Include="Images\book_reading_inspiration_113238_3840x2160.jpg" />
+    <Content Include="Images\company\71147142_2302213436543288_8670879929367265280_o.png" />
+    <Content Include="Images\company\97286895_3823915674347591_438360605796073472_o.jpg" />
+    <Content Include="Images\company\acxon.jpg" />
+    <Content Include="Images\company\daihocdanlapduytan.jpg" />
+    <Content Include="Images\company\devday-2016-the-way-to-success-speaker-markus-baur-ceo-at-axon-active-vietnam-1-638.jpg" />
+    <Content Include="Images\company\donga.jpeg" />
+    <Content Include="Images\company\dongabank.png" />
+    <Content Include="Images\company\duy-tan.png" />
+    <Content Include="Images\company\enclave-logo.png" />
+    <Content Include="Images\company\fpt.jpg" />
+    <Content Include="Images\company\fpt.png" />
+    <Content Include="Images\company\images.jpg" />
+    <Content Include="Images\company\kientruc.jpg" />
+    <Content Include="Images\company\sun.jpg" />
+    <Content Include="Images\company\sun_logotype_rgb_27.2k.jpg" />
+    <Content Include="Images\C_Sharp_logo.png" />
     <Content Include="Images\file excel\excel1.png" />
     <Content Include="Images\file excel\excel2.jpg" />
     <Content Include="Images\file excel\excel3.jpg" />
     <Content Include="Images\file excel\excel4.png" />
     <Content Include="Images\file excel\excel5.jpg" />
+    <Content Include="Images\files\trainer-1.jpg" />
+    <Content Include="Images\FPT_New_Logo.png" />
+    <Content Include="Images\hero-bg.jpg" />
+    <Content Include="Images\hinhavatar.jpg" />
+    <Content Include="Images\icon\daihocdanlapduytan.jpg" />
+    <Content Include="Images\icon\sort_asc.png" />
+    <Content Include="Images\icon\sort_asc_disabled.png" />
+    <Content Include="Images\icon\sort_both.png" />
+    <Content Include="Images\icon\sort_desc.png" />
+    <Content Include="Images\icon\sort_desc_disabled.png" />
+    <Content Include="Images\images\1.png" />
+    <Content Include="Images\images\2.png" />
+    <Content Include="Images\images\companyFPT.jpg" />
+    <Content Include="Images\images\fpt.png" />
+    <Content Include="Images\knigi31.jpg" />
+    <Content Include="Images\logo-duy-tan_vn.png" />
     <Content Include="Images\logo.png" />
-    <Content Include="Models\connectDatabase.Context.tt">
+    <Content Include="Images\play.png" />
+    <Content Include="Images\trainer\1.jpg" />
+    <Content Include="Images\trainer\28617145_2032586016965377_3029889264502680104_o.jpg" />
+    <Content Include="Images\trainer\about-trainer-2.jpg" />
+    <Content Include="Images\trainer\about-trainer-3.jpg" />
+    <Content Include="Images\trainer\hinhavatar.jpg" />
+    <Content Include="Images\trainer\trainer-1.jpg" />
+    <Content Include="Images\trainer\trainer-2.jpg" />
+    <Content Include="Images\trainer\trainer-3.jpg" />
+    <Content Include="Images\_thumbs\Files\trainer-1.jpg" />
+    <Content Include="Images\_thumbs\Images\companyFPT.jpg" />
+    <Content Include="Images\_thumbs\Images\fpt.png" />
+    <Content Include="Models\WebDatabaseEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>connectDatabase.edmx</DependentUpon>
-      <LastGenOutput>connectDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
+      <LastGenOutput>WebDatabaseEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\connectDatabase.tt">
+    <Content Include="Models\WebDatabaseEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>connectDatabase.edmx</DependentUpon>
-      <LastGenOutput>connectDatabase.cs</LastGenOutput>
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
+      <LastGenOutput>WebDatabaseEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3129,13 +3199,22 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\Lato-Regular.ttf" />
+    <Content Include="Scripts\Controller\CompanyController.js" />
+    <Content Include="Scripts\Controller\IntershipController.js" />
+    <Content Include="Scripts\Controller\JavaScript.js" />
+    <Content Include="Scripts\Controller\QLTaskControl.js" />
+    <Content Include="Scripts\Controller\SchoolController.js" />
+    <Content Include="Scripts\Controller\TaskController1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <EntityDeploy Include="Models\connectDatabase.edmx">
+    <Content Include="Content\slick\fonts\slick.eot" />
+    <Content Include="Content\slick\fonts\slick.ttf" />
+    <Content Include="Content\slick\fonts\slick.woff" />
+    <EntityDeploy Include="Models\WebDatabaseEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>connectDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>WebDatabaseEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\connectDatabase.edmx.diagram">
-      <DependentUpon>connectDatabase.edmx</DependentUpon>
+    <Content Include="Models\WebDatabaseEntities.edmx.diagram">
+      <DependentUpon>WebDatabaseEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
@@ -3151,14 +3230,20 @@
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.easydropdown.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.slicknav.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\memenu.js" />
     <Content Include="Scripts\metisMenu.js" />
+    <Content Include="Scripts\mixitup.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\responsiveslides.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\simpleCart.min.js" />
@@ -3202,6 +3287,9 @@
     <Content Include="Views\School\Index.cshtml" />
     <Content Include="Views\School\Create.cshtml" />
     <Content Include="Views\School\Edit.cshtml" />
+    <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+    <Content Include="Views\Information\TTcanhan.cshtml" />
+    <Content Include="Views\Menu\MainMenu.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

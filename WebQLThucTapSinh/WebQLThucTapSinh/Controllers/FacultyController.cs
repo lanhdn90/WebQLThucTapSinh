@@ -15,8 +15,7 @@ namespace WebQLThucTapSinh.Controllers
         public ActionResult Index()
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            //var id = Session["Person"].ToString();
-            var id = "ZXCVBUML";
+            var id = Session["Person"].ToString();
             var list = database.Organization.Where(x => x.PersonID == id).ToList();
             var companyID = database.Person.Find(id).CompanyID;
             list.Remove(list.SingleOrDefault(x => x.ID == companyID));
@@ -35,11 +34,9 @@ namespace WebQLThucTapSinh.Controllers
             if (ModelState.IsValid)
             {
                 WebDatabaseEntities database = new WebDatabaseEntities();
-                //var id = Session["Person"].ToString();
-                var id = "ZXCVBUML";
+                var id = Session["Person"].ToString();
                 organization.PersonID = id;
-                //var company = Session["CompanyID"].ToString();
-                var company = "ASDFGHJR";
+                var company = Session["CompanyID"].ToString();
                 var model = database.Organization.SingleOrDefault(x => x.ID == company);
                 organization.StartDay = model.StartDay;
                 organization.ExpiryDate = model.ExpiryDate;
@@ -95,8 +92,7 @@ namespace WebQLThucTapSinh.Controllers
 
         public int DeleteFaculty(string id)
         {
-            //var company = Session["CompanyID"].ToString();
-            var company = "ASDFGHJR";
+            var company = Session["CompanyID"].ToString();
             var re = new Share().UpdateIntern(id, company);
             if (re == true)
             {
@@ -190,5 +186,6 @@ namespace WebQLThucTapSinh.Controllers
                 return false;
             }
         }
+
     }
 }

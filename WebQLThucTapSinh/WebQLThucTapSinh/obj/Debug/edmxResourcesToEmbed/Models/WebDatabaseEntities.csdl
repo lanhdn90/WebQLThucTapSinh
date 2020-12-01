@@ -45,6 +45,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="TextMenu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="RoleID" Type="Int32" />
@@ -79,9 +80,11 @@
     <Property Name="ExpiryDate" Type="Int32" />
     <Property Name="Status" Type="Boolean" />
     <Property Name="SendEmail" Type="Boolean" />
+    <Property Name="PersonID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="InternShip" Relationship="Self.FK_InternShip_Company" FromRole="Organization" ToRole="InternShip" />
-    <NavigationProperty Name="Person" Relationship="Self.FK_Person_Company" FromRole="Organization" ToRole="Person" />
-    <NavigationProperty Name="Person1" Relationship="Self.FK_Person_School" FromRole="Organization" ToRole="Person" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Organization_Person" FromRole="Organization" ToRole="Person" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK_Person_Company" FromRole="Organization" ToRole="Person" />
+    <NavigationProperty Name="Person2" Relationship="Self.FK_Person_School" FromRole="Organization" ToRole="Person" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -102,8 +105,9 @@
     <NavigationProperty Name="Intern" Relationship="Self.FK__Intern__PersonID__46E78A0C" FromRole="Person" ToRole="Intern" />
     <NavigationProperty Name="InternShip" Relationship="Self.FK_InternShip_Person" FromRole="Person" ToRole="InternShip" />
     <NavigationProperty Name="News" Relationship="Self.FK_News_Person" FromRole="Person" ToRole="News" />
-    <NavigationProperty Name="Organization" Relationship="Self.FK_Person_Company" FromRole="Person" ToRole="Organization" />
-    <NavigationProperty Name="Organization1" Relationship="Self.FK_Person_School" FromRole="Person" ToRole="Organization" />
+    <NavigationProperty Name="Organization" Relationship="Self.FK_Organization_Person" FromRole="Person" ToRole="Organization" />
+    <NavigationProperty Name="Organization1" Relationship="Self.FK_Person_Company" FromRole="Person" ToRole="Organization" />
+    <NavigationProperty Name="Organization2" Relationship="Self.FK_Person_School" FromRole="Person" ToRole="Organization" />
     <NavigationProperty Name="Users" Relationship="Self.FK__Users__PersonID__32E0915F" FromRole="Person" ToRole="Users" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Person_Role" FromRole="Person" ToRole="Role" />
     <NavigationProperty Name="Task" Relationship="Self.FK_Task_Person" FromRole="Person" ToRole="Task" />
@@ -276,6 +280,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Organization_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonID" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Person_Company">
     <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
     <End Role="Person" Type="Self.Person" Multiplicity="*" />
@@ -408,6 +424,10 @@
     <AssociationSet Name="FK_News_Person" Association="Self.FK_News_Person">
       <End Role="Person" EntitySet="Person" />
       <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organization_Person" Association="Self.FK_Organization_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Organization" EntitySet="Organization" />
     </AssociationSet>
     <AssociationSet Name="FK_Person_Company" Association="Self.FK_Person_Company">
       <End Role="Organization" EntitySet="Organization" />

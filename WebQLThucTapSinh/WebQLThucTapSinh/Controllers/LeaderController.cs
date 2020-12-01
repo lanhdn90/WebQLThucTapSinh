@@ -17,8 +17,7 @@ namespace WebQLThucTapSinh.Controllers
         public ActionResult Index(string id = null)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            //var company = Session["CompanyID"].ToString();
-            var company = "QWERTFGH";
+            var company = Session["CompanyID"].ToString();
             var model = (from a in database.Person
                          join b in database.Users on a.PersonID equals b.PersonID
                          where a.CompanyID == company && a.RoleID == 4
@@ -89,8 +88,7 @@ namespace WebQLThucTapSinh.Controllers
                 person.Address = ledder.Address;
                 person.Phone = ledder.Phone;
                 person.Email = ledder.Email;
-                //person.CompanyID = Session["CompanyID"].ToString();
-                person.CompanyID = "QWERTFGH";
+                person.CompanyID = Session["CompanyID"].ToString();
                 if(new Share().InsertPerson(person)){
                     if (SendMailTK(personID))
                     {
@@ -219,8 +217,7 @@ namespace WebQLThucTapSinh.Controllers
 
         public void SetViewBagL(string selectedID = null)
         {
-            //var model = Session["CompanyID"].ToString();
-            var model = "QWERTFGH";
+            var model = Session["CompanyID"].ToString();
             WebDatabaseEntities database = new WebDatabaseEntities();
             var list = database.Person.Where(x => x.CompanyID == model && x.RoleID == 4).ToList();
             var listLeader = new List<LeaderClass>();

@@ -16,11 +16,9 @@ namespace WebQLThucTapSinh.Controllers
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             //Sau khi làm sprint Login thì mở lại
-            //var id = Session["Person"].ToString();
-            var id = "ZXCKBHML";
+            var id = Session["Person"].ToString();
             // Lấy roleID
-            //var r = Convert.ToInt32(Session["Role"].ToString());
-            var ro = 4;
+            var ro = Convert.ToInt32(Session["Role"].ToString());
             if (ro == 4)
             {
                 var model = (from a in database.Task
@@ -42,8 +40,7 @@ namespace WebQLThucTapSinh.Controllers
             }
             else
             {
-                //var comid = Session["CompanyID"].ToString();
-                var comid = "QWERTFGH";
+                var comid = Session["CompanyID"].ToString();
                 var model = (from a in database.Task
                              join b in database.Person on a.PersonID equals b.PersonID
                              where b.CompanyID == comid && b.RoleID == 4
@@ -67,8 +64,7 @@ namespace WebQLThucTapSinh.Controllers
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             //Sau khi làm sprint Login thì mở lại
-            //var id = Session["Person"].ToString();
-            var id = "ZXCKBHML";
+            var id = Session["Person"].ToString();
             var find = database.Person.Find(id);
             return database.InternShip.Where(x => x.CompanyID == find.CompanyID).ToList();
         }
@@ -147,8 +143,7 @@ namespace WebQLThucTapSinh.Controllers
             {
                 WebDatabaseEntities database = new WebDatabaseEntities();
                 //Sau khi làm sprint Login thì mở lại
-                //var personID = Session["Person"].ToString();
-                var personID = "ZXCKBHML";
+                var personID = Session["Person"].ToString();
                 var count = database.Task.Count();
                 Task t = new Task();
                 t.TaskID = count + 1;

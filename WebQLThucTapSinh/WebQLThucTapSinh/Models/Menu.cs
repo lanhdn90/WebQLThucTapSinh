@@ -15,6 +15,7 @@ namespace WebQLThucTapSinh.Models
     public partial class Menu
     {
         public int Id { get; set; }
+        public string Icon { get; set; }
         public string TextMenu { get; set; }
         public string Link { get; set; }
         public Nullable<int> RoleID { get; set; }

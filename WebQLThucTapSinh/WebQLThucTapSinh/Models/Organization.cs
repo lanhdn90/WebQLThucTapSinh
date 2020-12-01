@@ -38,7 +38,7 @@ namespace WebQLThucTapSinh.Models
         public bool Status { get; set; }
         public bool SendEmail { get; set; }
         public string PersonID { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InternShip> InternShip { get; set; }
         public virtual Person Person { get; set; }

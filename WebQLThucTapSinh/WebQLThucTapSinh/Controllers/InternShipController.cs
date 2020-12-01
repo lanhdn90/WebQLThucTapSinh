@@ -36,11 +36,9 @@ namespace WebQLThucTapSinh.Controllers
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
             //Sau khi làm sprint Login thì mở lại
-            //var personID = Session["Person"].ToString();
-            var personID = "ZXCKBHML";
+            var personID = Session["Person"].ToString();
 
-            //var role = Convert.ToInt32(Session["Role"]);
-            var role = 2;
+            var role = Convert.ToInt32(Session["Role"]);
             var companyId = database.Person.Find(personID).CompanyID;
             var model = new InternShipViewModel();
             if (role == 4)
@@ -108,18 +106,15 @@ namespace WebQLThucTapSinh.Controllers
                 i.StartDay = ish.StartDay;
                 i.ExpiryDate = ish.ExpiryDate;
                 i.Status = false;
-                //i.CompanyID = Session["CompanyID"].ToString();
-                i.CompanyID = "QWERTFGH";
-                //var ro = Convert.ToInt32(Session["Role"]);
-                var ro = 4;
+                i.CompanyID = Session["CompanyID"].ToString();
+                var ro = Convert.ToInt32(Session["Role"]);
                 if (ish.PersonID != null)
                 {
                     i.PersonID = ish.PersonID;
                 }
                 else if (ro == 4)
                 {
-                    //var pid = Session["Person"].ToString();
-                    var pid = "ZXCKBHML";
+                    var pid = Session["Person"].ToString();
                     i.PersonID = pid;
                 }
                 database.InternShip.Add(i);
@@ -167,8 +162,7 @@ namespace WebQLThucTapSinh.Controllers
         public void SetViewBagL(string selectedID = null)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            //var model = Session["CompanyID"].ToString();
-            var model = "QWERTFGH";
+            var model = Session["CompanyID"].ToString();
             var list = database.Person.Where(x => x.CompanyID == model && x.RoleID == 4).ToList();
             var listLeader = new List<LeaderClass>();
             
@@ -239,8 +233,7 @@ namespace WebQLThucTapSinh.Controllers
         public ActionResult Accuracy(int id)
         {
             WebDatabaseEntities database = new WebDatabaseEntities();
-            //var pid = Session["Person"].ToString();
-            var pid = "ZXCKBHML";
+            var pid = Session["Person"].ToString();
             var model = database.InternShip.Find(id);
             model.PersonID = pid;
             database.SaveChanges();

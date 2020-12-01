@@ -116,7 +116,6 @@ namespace WebQLThucTapSinh.Controllers
                 client.Timeout = 100000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 NetworkCredential nc = new NetworkCredential(fromEmailAddress, fromEmailPassword);
-                //NetworkCredential nc = new NetworkCredential("htkhdreamteamdn@gmail.com", "Tinhban098");
                 client.UseDefaultCredentials = false;
                 client.Credentials = nc;
                 client.Send(message);
@@ -179,8 +178,6 @@ namespace WebQLThucTapSinh.Controllers
                         {
                             result = JsonConvert.SerializeObject("Xảy ra lỗi xóa công ty", Formatting.Indented, json);
                         }
-
-
                     }
                     else
                     {
@@ -219,7 +216,6 @@ namespace WebQLThucTapSinh.Controllers
             {
                 return false;
             }
-
         }
 
 

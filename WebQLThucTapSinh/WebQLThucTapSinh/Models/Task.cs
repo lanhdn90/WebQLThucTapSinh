@@ -31,7 +31,7 @@ namespace WebQLThucTapSinh.Models
         public string PersonID { get; set; }
         public Nullable<int> NumberOfQuestions { get; set; }
         public Nullable<int> Result { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IntershipWithTask> IntershipWithTask { get; set; }
         public virtual Person Person { get; set; }
