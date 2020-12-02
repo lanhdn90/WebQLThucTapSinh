@@ -152,6 +152,7 @@
     <Compile Include="Common\LeaderClass.cs" />
     <Compile Include="Common\MaHoaMd5.cs" />
     <Compile Include="Common\RepresentativeClass.cs" />
+    <Compile Include="Common\RestartPassword.cs" />
     <Compile Include="Common\Share.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
@@ -3205,6 +3206,13 @@
     <Content Include="Scripts\Controller\QLTaskControl.js" />
     <Content Include="Scripts\Controller\SchoolController.js" />
     <Content Include="Scripts\Controller\TaskController1.js" />
+    <Content Include="Scripts\cvore\index.js" />
+    <Content Include="Scripts\cvore\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\HomeControl\Dangki.js" />
+    <Content Include="Scripts\HomeControl\index1.js" />
+    <Content Include="Scripts\HomeControl\index2.js" />
+    <Content Include="Scripts\HomeControl\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\HomeControl\Kiemtraemail.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Content\slick\fonts\slick.eot" />
     <Content Include="Content\slick\fonts\slick.ttf" />
@@ -3290,6 +3298,9 @@
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Information\TTcanhan.cshtml" />
     <Content Include="Views\Menu\MainMenu.cshtml" />
+    <Content Include="Views\Home\CreateUser.cshtml" />
+    <Content Include="Views\Home\PasswordRetrieval.cshtml" />
+    <Content Include="Views\Home\cvOrgan.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
