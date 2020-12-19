@@ -1,0 +1,16 @@
+﻿.videos{
+    display:flex;
+}
+
+.list{
+    width: 50%;
+}
+
+.text1{
+    text-align:center;
+    font-weight: bold;
+}
+
+.so{
+    padding: 0px 60px;
+}

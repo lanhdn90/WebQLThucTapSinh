@@ -1,0 +1,11 @@
+﻿.dropdown
+{
+    margin-left: 25px;
+    width: 250px;
+    text-align: center;
+}
+
+.form-dropdown{
+    display: flex;
+    margin-top: 25px;
+}

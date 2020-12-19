@@ -11,8 +11,7 @@ namespace WebQLThucTapSinh.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Mvc;
-
+    
     public partial class InternShip
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,14 +23,13 @@ namespace WebQLThucTapSinh.Models
     
         public int InternshipID { get; set; }
         public string CourseName { get; set; }
-        [AllowHtml]
         public string Note { get; set; }
         public string PersonID { get; set; }
         public string CompanyID { get; set; }
         public DateTime StartDay { get; set; }
         public int ExpiryDate { get; set; }
         public bool Status { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Intern> Intern { get; set; }
         public virtual Organization Organization { get; set; }

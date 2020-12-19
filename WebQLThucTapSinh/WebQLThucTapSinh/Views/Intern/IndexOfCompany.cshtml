@@ -1,0 +1,173 @@
+﻿
+@using WebQLThucTapSinh.Models;
+
+@{
+    ViewBag.Title = "IndexOfFaculty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var intership = (List<WebQLThucTapSinh.Models.InternShip>)ViewBag.listin;
+    WebDatabaseEntities database = new WebDatabaseEntities();
+}
+<link href="~/Content/StyleIntern.css" rel="stylesheet" />
+<div class="page-header">
+    <a href="#tab_1-1" data-toggle="tab" class="btn btn-outline btn-primary">Danh Sách Thực tập sinh</a>
+    <a href="#tab_1-2" data-toggle="tab" class="btn btn-outline btn-primary">Danh Sách chưa xác nhận</a>
+    <a href="/Intern/Create" id="them" class="them btn btn-outline btn-primary">Thêm</a>
+    <a href="/Intern/imPortExcel" id="them" class="them btn btn-outline btn-primary">Thêm File Excel</a>
+</div>
+<div class="dataTable_wrapper tab-content">
+    <div class=" tab-pane active" id="tab_1-1">
+        <div class="col-md-8" style="margin-left: 0px !important;">
+            <div class="row">
+                <h3 style="width: 100%; margin-left: 0px !important; text-align: center;">DANH SÁCH THỰC TẬP SINH</h3>
+                <br />
+                <br />
+                <table class="table ble">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Họ và Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Trường</th>
+                            <th>Kết quả</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    </tbody>
+                </table>
+                <script id="data-template" type="x-tmpl-mustache">
+                    <tr>
+                        <td class="text-center"><input name="dschon" type="checkbox" value="{{PersonID}}" /> </td>
+                        <td>{{FullName}}</td>
+                        <td>{{Birthday}}</td>
+                        <td>{{School}}</td>
+                        <td>{{Result}}</td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+        <div>
+
+        </div>
+        <div class="col-md-4 ban2">
+            <div class="row">
+                @{
+                    var name = Convert.ToInt32(@Session["InternshipID"]);
+                }
+                <h3 style="width: 100%;text-align: center;">DANH SÁCH KHÓA HỌC</h3> <h3 id="h3-heading" style="width: 100%;text-align: center;">@database.InternShip.Find(name).CourseName</h3>
+                @ViewBag.ERR
+                <table class="table ble" style="margin-left: 20px">
+                    <thead>
+                        <tr>
+                            <th>Khóa học</th>
+                            @if (@Session["Role"].ToString() != "4")
+                            {
+                                <th> Quản lý </th>
+
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in intership)
+                        {
+                            if (@item.PersonID != null)
+                            {
+                                <tr>
+                                    <td><a class="btn-internship" data-id="@item.InternshipID" data-name="@item.CourseName">@item.CourseName</a></td>
+                                    @if (@Session["Role"].ToString() != "4")
+                                    {
+                                        <td><a href="">@database.Person.SingleOrDefault(x => x.PersonID == @item.PersonID).LastName @database.Person.SingleOrDefault(x => x.PersonID == @item.PersonID).FirstName</a></td>
+
+                                    }
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="tab_1-2">
+        <div class="col-md-8" style="margin-left: 0px !important;">
+            <div class="row">
+                <h3 style="width: 100%; margin-left: 0px !important; text-align: center;">DANH SÁCH THỰC TẬP SINH</h3>
+                <br />
+                <br />
+                <table class="table ble">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Họ và Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Trường</th>
+                            <th>Hoạt động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable1">
+                    </tbody>
+                    <script id="data-template1" type="x-tmpl-mustache">
+                        <tr>
+                            <td class="text-center"><input name="dschon1" type="checkbox" value="{{PersonID}}" /> </td>
+                            <td>{{FullName}}</td>
+                            <td>{{Birthday}}</td>
+                            <td>{{School}}</td>
+                            <td>
+                                <a href="/InternShip/Edit/{{PersonID}}" class="btn btn-outline btn-primary">Sửa</a>||
+                                <a data-id="{{PersonID}}" class="deleteInternShip btn btn-outline btn-primary">Xóa</a>
+                            </td>
+                        </tr>
+                    </script>
+                </table>
+            </div>
+        </div>
+        <div>
+
+        </div>
+        <div class="col-md-4 ban2">
+            <div class="row">
+                <h3 style="width: 100%;text-align: center;">DANH SÁCH KHÓA HỌC</h3>
+                <br />
+                <br />
+                @ViewBag.ERR
+                <table class="table ble" style="margin-left: 20px">
+                    <thead>
+                        <tr>
+                            <th>Khóa học</th>
+                            @if (@Session["Role"].ToString() != "4")
+                            {
+                                <th> Quản lý </th>
+
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in intership)
+                        {
+                            <tr>
+
+                                <td><a class="btn-sendinternship" data-id="@item.InternshipID" data-name="@item.CourseName">@item.CourseName</a></td>
+                                @if (@Session["Role"].ToString() != "4" && @item.PersonID != null)
+                                {
+                                    <td><a href="">@database.Person.SingleOrDefault(x => x.PersonID == @item.PersonID).LastName @database.Person.SingleOrDefault(x => x.PersonID == @item.PersonID).FirstName</a></td>
+
+                                }
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    //Variable you want to access
+    var mySessionVariable = '@Session["InternshipID"]';
+</script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/plugins/mustache.min.js"></script>
+<script src="~/Scripts/HomeControl/InternOfCompany.js"></script>

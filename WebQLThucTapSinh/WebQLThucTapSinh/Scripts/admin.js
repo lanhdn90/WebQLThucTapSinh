@@ -413,7 +413,7 @@ $(document).ready(function(){
         e.preventDefault();
         var id = $(this).data('id');
         var name = $(this).data('name');
-        var r = confirm('Bạn có chắc muốn xóa trườngn ' + name + ' hay không ?');
+        var r = confirm('Bạn có chắc muốn xóa trường ' + name + ' hay không ?');
         if (r == true) {
             $.ajax({
                 url: '/School/Delete',

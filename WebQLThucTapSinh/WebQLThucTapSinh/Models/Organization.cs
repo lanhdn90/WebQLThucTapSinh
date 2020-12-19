@@ -11,8 +11,7 @@ namespace WebQLThucTapSinh.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Mvc;
-
+    
     public partial class Organization
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,7 +29,6 @@ namespace WebQLThucTapSinh.Models
         public string Fax { get; set; }
         public string Image { get; set; }
         public string Logo { get; set; }
-        [AllowHtml]
         public string Note { get; set; }
         public string Email { get; set; }
         public DateTime StartDay { get; set; }
@@ -38,7 +36,7 @@ namespace WebQLThucTapSinh.Models
         public bool Status { get; set; }
         public bool SendEmail { get; set; }
         public string PersonID { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InternShip> InternShip { get; set; }
         public virtual Person Person { get; set; }

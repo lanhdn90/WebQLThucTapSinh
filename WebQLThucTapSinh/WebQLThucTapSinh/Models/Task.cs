@@ -11,8 +11,7 @@ namespace WebQLThucTapSinh.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Mvc;
-
+    
     public partial class Task
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +24,6 @@ namespace WebQLThucTapSinh.Models
     
         public int TaskID { get; set; }
         public string TaskName { get; set; }
-        [AllowHtml]
         public string Note { get; set; }
         public string Video { get; set; }
         public string PersonID { get; set; }

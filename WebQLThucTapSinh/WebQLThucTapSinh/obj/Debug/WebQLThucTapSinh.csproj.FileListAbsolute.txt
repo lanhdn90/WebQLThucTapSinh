@@ -180,3 +180,7 @@ E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\obj\Debug\WebQLThucTap
 E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\obj\Debug\WebQLThucTapSinh.csproj.CopyComplete
 E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\obj\Debug\WebQLThucTapSinh.dll
 E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\obj\Debug\WebQLThucTapSinh.pdb
+E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\bin\PagedList.dll
+E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\bin\PagedList.Mvc.dll
+E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\bin\PagedList.xml
+E:\Khoa Luan Tot Nghiep\WebQLThucTapSinh\WebQLThucTapSinh\bin\PagedList.Mvc.xml
