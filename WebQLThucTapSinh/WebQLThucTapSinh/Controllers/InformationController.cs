@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebQLThucTapSinh.Common;
 using WebQLThucTapSinh.Models;
 
 namespace WebQLThucTapSinh.Controllers
@@ -23,6 +24,38 @@ namespace WebQLThucTapSinh.Controllers
             var model = database.Person.Find(findU.PersonID);
             SetViewBagG();
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult TTcanhan1(string Password, string Newpassword)
+        {
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var userName = Session["TenTk"].ToString();
+            var model = database.Users.Find(userName);
+            if (model.PassWord != MaHoaMd5.MD5Hash(Password))
+            {
+                ModelState.AddModelError("", "Mật khẩu không đúng.");
+
+            }
+            else
+            {
+                HomeController home = new HomeController();
+                home.UpdateUser(model.PersonID, Newpassword);
+            }
+            SetViewBagG();
+            var findP = database.Person.Find(model.PersonID);
+            return RedirectToAction("TTcanhan");
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePerson(Person person)
+        {
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var userName = Session["TenTk"].ToString();
+            var model = database.Users.Find(userName);
+            new Share().UpdatePerson(person);
+            SetViewBagG();
+            return RedirectToAction("TTcanhan");
         }
 
         public void SetViewBagG(string selectedID = null)

@@ -46,7 +46,6 @@ function showHide2() {
         passwordAgain.setAttribute('type', 'password');
     }
 }
-function kiểm
 function kiemtra() {
     if (pass2.value !== pass1.value) {
         alert('Mật Khẩu Không Trùng Khớp');

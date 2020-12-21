@@ -856,22 +856,10 @@ namespace WebQLThucTapSinh.Controllers
             
         }
 
-        [HttpPost]
         public ActionResult Delete(string id)
         {
-            JsonSerializerSettings json = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
-            var result = "";
-            if(DeleteIntern(id))
-            {
-                result = JsonConvert.SerializeObject("Xóa thành công", Formatting.Indented, json);
-
-            }
-            else
-            {
-                result = JsonConvert.SerializeObject("Xóa thất bại", Formatting.Indented, json);
-
-            }
-            return this.Json(result, JsonRequestBehavior.AllowGet);
+            DeleteIntern(id);
+            return RedirectToAction("Index");
         }
 
         public bool DeleteIntern(string id)

@@ -50,7 +50,10 @@
         
     });
 
+
+    
 });
+
 function deleteInten() {
     var id = $(this).data('id');
     var name = $(this).data('name');

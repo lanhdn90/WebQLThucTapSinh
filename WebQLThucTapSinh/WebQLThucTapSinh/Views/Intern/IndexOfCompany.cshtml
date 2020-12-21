@@ -115,9 +115,10 @@
                             <td>{{School}}</td>
                             <td data-id="{{PersonID}}" data-name="{{FullName}}" class="deleteIntern">
                                 <a href="/Intern/Edit/{{PersonID}}" class="btn btn-outline btn-primary">Sửa</a>||
-                                <a data-id="{{PersonID}}" data-name="{{FullName}}" onclick="deleteInten()"  name="deleteIntern" class="deleteIntern btn btn-outline btn-primary">Xóa</a>
+                                <a href="/Intern/Delete/{{PersonID}}" class="deleteIntern btn btn-outline btn-primary">Xóa</a>
                             </td>
                         </tr>
+
                     </script>
                 </table>
             </div>
@@ -162,12 +163,13 @@
         </div>
     </div>
 </div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/plugins/mustache.min.js"></script>
+<script src="~/Scripts/HomeControl/InternOfCompany.js"></script>
 <script>
 
     //Variable you want to access
     var mySessionVariable = '@Session["InternshipID"]';
 </script>
-<script src="~/Scripts/jquery-3.4.1.js"></script>
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/plugins/mustache.min.js"></script>
-<script src="~/Scripts/HomeControl/InternOfCompany.js"></script>

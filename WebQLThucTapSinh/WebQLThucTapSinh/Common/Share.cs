@@ -335,6 +335,27 @@ namespace WebQLThucTapSinh.Common
             }
         }
 
-
+        public bool UpdatePerson(Person person)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var model = database.Person.Find(person.PersonID);
+                model.LastName = person.LastName;
+                model.FirstName = person.FirstName;
+                model.Address = person.Address;
+                model.Birthday = person.Birthday;
+                model.Gender = person.Gender;
+                model.Phone = person.Phone;
+                model.Image = person.Image;
+                model.Email = person.Email;
+                database.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
