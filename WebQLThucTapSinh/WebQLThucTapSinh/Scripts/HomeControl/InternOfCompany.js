@@ -49,7 +49,30 @@
         }
         
     });
+
 });
+function deleteInten() {
+    var id = $(this).data('id');
+    var name = $(this).data('name');
+    debugger;
+    var r = confirm('Bạn có chắc muốn xóa thực tập sinh ' + name + ' hay không ?');
+    if (r == true) {
+        $.ajax({
+            url: '/Intern/Delete',
+            data: { id: id },
+            type: 'POST',
+            success: function (data) {
+                var json = JSON.parse(data);
+                alert(json);
+                window.location.reload();
+            },
+            error: function (err) {
+                alert("Đã xảy ra lỗi" + err.responseText);
+            }
+        });
+    }
+};
+
 function loadData(internShipId) {
     $.ajax({
         url: '/Intern/LoadDataOfCompany',

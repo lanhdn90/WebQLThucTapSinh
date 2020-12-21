@@ -7,6 +7,27 @@
         loadData(session, FaId);
     });
 
+    $(".deleteIntern").off('click').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var r = confirm('Bạn có chắc muốn xóa thực tập sinh ' + name + ' hay không ?');
+        if (r == true) {
+            $.ajax({
+                url: '/Intern/Delete',
+                data: { id: id },
+                type: 'POST',
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    alert(json);
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Đã xảy ra lỗi" + err.responseText);
+                }
+            });
+        }
+    });
 });
 function loadData(facultyID, companyID) {
     $.ajax({

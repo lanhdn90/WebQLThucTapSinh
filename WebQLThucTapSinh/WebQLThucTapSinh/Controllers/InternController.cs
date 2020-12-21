@@ -732,5 +732,172 @@ namespace WebQLThucTapSinh.Controllers
                 return false;
             }
         }
+
+        public ActionResult CVIntern(string id = null)
+        {
+            if (id == null)
+            {
+                id = Session["Person"].ToString();
+            }
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var model = database.Person.Find(id);
+            var listIn = (from a in database.TestResults
+                          join e in database.Task on a.TaskID equals e.TaskID
+                          where a.PersonID == id
+                          select new TestResultsClass()
+                          {
+                              PersonID = a.PersonID,
+                              TaskID = a.TaskID,
+                              TaskName = e.TaskName,
+                              Answer = a.Answer,
+                          }).OrderBy(x => x.TaskID).ToList();
+            ViewBag.listI = listIn;
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            var role = Convert.ToInt32(Session["Role"]);
+            SetViewBag();
+            SetViewBagS();
+            SetViewBagG();
+            if (role != 3)
+            {
+                SetViewBagI();
+            }
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var findP = database.Person.Find(id);
+            var findI = database.Intern.Find(id);
+            InternClass model = new InternClass();
+            model.PersonID = findP.PersonID;
+            model.LastName = findP.LastName;
+            model.FirstName = findP.FirstName;
+            model.Birthday = findP.Birthday;
+            model.Gender = findP.Gender;
+            model.Address = findP.Address;
+            model.Phone = findP.Phone;
+            model.Email = findP.Email;
+            model.Image = findP.Image;
+            model.SchoolID = findP.SchoolID;
+            model.SchoolID = findP.CompanyID;
+            model.StudentCode = findI.StudentCode;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(InternClass intern)
+        {
+            var role = Convert.ToInt32(Session["Role"].ToString());
+            if (ModelState.IsValid)
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var model = database.Person.Find(intern.PersonID);
+                model.LastName = intern.LastName;
+                model.FirstName = intern.FirstName;
+                model.Birthday = intern.Birthday;
+                model.Gender = intern.Gender;
+                model.Address = intern.Address;
+                model.Phone = intern.Phone;
+                var email = model.Email;
+                model.Email = intern.Email;
+                model.Image = intern.Image;
+                if (role == 3 || role == 6)
+                {
+                    if(intern.CompanyID != null)
+                    {
+                        model.CompanyID = intern.CompanyID;
+                    }
+                    UpdateIntern(intern.PersonID, intern.StudentCode);
+                }
+                else
+                {
+                    if(intern.FacultyId != null)
+                    {
+                        model.SchoolID = intern.FacultyId;
+                    }
+                }
+                database.SaveChanges();
+                if(email != intern.Email)
+                {
+                    SendMailTK(intern.PersonID);
+                }
+               
+                ModelState.AddModelError("", "Cập nhật Thực tập sinh thành công");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Cập nhật Thực tập sinh thất bại");
+            }
+            SetViewBag();
+            SetViewBagS();
+            SetViewBagG();
+            if (role != 3)
+            {
+                SetViewBagI();
+            }
+            return View("Edit");
+        }
+
+        public bool UpdateIntern(string id, string studentCode)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var model1 = database.Intern.Find(id);
+                model1.StudentCode = studentCode;
+                database.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
+
+        [HttpPost]
+        public ActionResult Delete(string id)
+        {
+            JsonSerializerSettings json = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore };
+            var result = "";
+            if(DeleteIntern(id))
+            {
+                result = JsonConvert.SerializeObject("Xóa thành công", Formatting.Indented, json);
+
+            }
+            else
+            {
+                result = JsonConvert.SerializeObject("Xóa thất bại", Formatting.Indented, json);
+
+            }
+            return this.Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public bool DeleteIntern(string id)
+        {
+            try
+            {
+                WebDatabaseEntities database = new WebDatabaseEntities();
+                var model = database.Intern.Find(id);
+                var internshipID = model.InternshipID;
+                database.Intern.Remove(model);
+                var model2 = database.Users.SingleOrDefault(x => x.PersonID == id);
+                if (model2 != null)
+                {
+                    database.Users.Remove(model2);
+                }
+                var model1 = database.Person.Find(id);
+                database.Person.Remove(model1);
+                database.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
     }
 }

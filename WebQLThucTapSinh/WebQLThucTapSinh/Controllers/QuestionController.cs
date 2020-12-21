@@ -87,7 +87,7 @@ namespace WebQLThucTapSinh.Controllers
             //Sau khi làm sprint Login thì mở lại
             var personID = Session["Person"].ToString();
             List<Task> Task = database.Task.Where(x => x.PersonID == personID).ToList();
-            if(id == 1)
+            if (id == 1)
             {
                 SelectList QueList = new SelectList(Task, "TaskID", "TaskName");
                 ViewBag.QueList = QueList;
@@ -95,7 +95,7 @@ namespace WebQLThucTapSinh.Controllers
             else
             {
                 ViewBag.QueList = Task;
-            }          
+            }
         }
 
         public bool CreateQ(Question question)
@@ -228,7 +228,7 @@ namespace WebQLThucTapSinh.Controllers
                 else
                 {
                     ModelState.AddModelError("", "cập nhật thất bại");
-                }               
+                }
             }
             SetViewBag(1);
             return View("Edit");
@@ -264,7 +264,7 @@ namespace WebQLThucTapSinh.Controllers
                 //Đếm table quesition có báo nhiêu row
                 var count = database.Question.ToList().Count;
                 // kiểm tra count và id có bằng nhau không
-                if(count == id)
+                if (count == id)
                 {
                     database.Question.Remove(database.Question.Find(id));
                 }
@@ -290,7 +290,7 @@ namespace WebQLThucTapSinh.Controllers
             {
                 return false;
             }
-            
+
         }
 
         // Chú ý Method này được gọi trong file JS admin
@@ -308,6 +308,45 @@ namespace WebQLThucTapSinh.Controllers
                 result = JsonConvert.SerializeObject("Xóa thất bại", Formatting.Indented, json);
             }
             return this.Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ListQuestion(long? taskid = null)
+        {
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            string taikhoan = Session["TenTK"].ToString();
+            var listQuestion = database.Question.Where(x => x.TaskID == taskid).ToList();
+            var model = database.Task.SingleOrDefault(c=>c.TaskID == taskid);
+            int count = listQuestion.Count() - Convert.ToInt32(model.NumberOfQuestions);
+            for (int i = 0; i < count; i++)
+            {
+                Random rd = new Random();
+                int j = rd.Next(count);
+                listQuestion.RemoveAt(j);
+            }
+            return PartialView(listQuestion);
+        }
+
+        public bool UpdateAnswer(string id, int answer, int task)
+        {
+            WebDatabaseEntities database = new WebDatabaseEntities();
+            var number = database.Task.SingleOrDefault(c => c.TaskID == task).Result;
+            if(answer >= number)
+            {
+                TestResults testResults = new TestResults();
+                testResults.ID = database.TestResults.Count() + 1;
+                testResults.PersonID = id;
+                testResults.TaskID = task;
+                testResults.Answer = answer;
+                database.TestResults.Add(testResults);
+                var model = database.Intern.Find(id);
+                model.Result = model.Result + 1;
+                database.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -37,7 +37,7 @@
                 <script id="data-template" type="x-tmpl-mustache">
                     <tr>
                         <td class="text-center"><input name="dschon" type="checkbox" value="{{PersonID}}" /> </td>
-                        <td>{{FullName}}</td>
+                        <td><a href="/Intern/CVIntern/{{PersonID}}">{{FullName}}</a></td>
                         <td>{{Birthday}}</td>
                         <td>{{School}}</td>
                         <td>{{Result}}</td>
@@ -113,9 +113,9 @@
                             <td>{{FullName}}</td>
                             <td>{{Birthday}}</td>
                             <td>{{School}}</td>
-                            <td>
-                                <a href="/InternShip/Edit/{{PersonID}}" class="btn btn-outline btn-primary">Sửa</a>||
-                                <a data-id="{{PersonID}}" class="deleteInternShip btn btn-outline btn-primary">Xóa</a>
+                            <td data-id="{{PersonID}}" data-name="{{FullName}}" class="deleteIntern">
+                                <a href="/Intern/Edit/{{PersonID}}" class="btn btn-outline btn-primary">Sửa</a>||
+                                <a data-id="{{PersonID}}" data-name="{{FullName}}" onclick="deleteInten()"  name="deleteIntern" class="deleteIntern btn btn-outline btn-primary">Xóa</a>
                             </td>
                         </tr>
                     </script>

@@ -24,7 +24,7 @@ $(document).ready(function () {
         e.preventDefault();
         $.ajax({
             type: 'GET',
-            url: '/QLTest/Question',
+            url: '/Question/ListQuestion',
             data: { taskid: taskID},
             success: function (result) {
                 $('.from1').html(result);

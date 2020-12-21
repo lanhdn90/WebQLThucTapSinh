@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ExpiryDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ExpiryDate", (IEnumerable<SelectListItem>)ViewBag.Month, "-- Chọn tháng --", htmlAttributes: new { @class = "gender control-label col-md-2" })
+                @Html.DropDownList("ExpiryDate", (IEnumerable<SelectListItem>)ViewBag.Month, "-- Chọn thời gian --", htmlAttributes: new { @class = "gender control-label col-md-2" })
                 @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.PersonID, "PersonID", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("PersonID", (IEnumerable<SelectListItem>)ViewBag.ListLeader, "-- Chọn Hướng dẫn --", htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("PersonID", (IEnumerable<SelectListItem>)ViewBag.ListLeader, "-- Chọn người Hướng dẫn --", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.PersonID, "", new { @class = "text-danger" })
                 </div>
             </div>}
